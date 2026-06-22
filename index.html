@@ -1171,37 +1171,71 @@ function setMoreTab(tab, btn) {
 // ═══════════════════════════════════════════
 // STARTUP
 // ═══════════════════════════════════════════
-async function startup() {
-  document.getElementById("lst").textContent = "Connecting to NSE India…\nFirst load may take 30–40 seconds.";
-  try {
-    // Load TV chart immediately (doesn't need proxy)
-    loadTvChart();
+function isMarketHours() {
+  // IST = UTC+5:30
+  const now = new Date();
+  const ist = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
+  const h = ist.getUTCHours(), m = ist.getUTCMinutes(), day = ist.getUTCDay();
+  // Monday=1 to Friday=5 only
+  if (day === 0 || day === 6) return false;
+  return (h > 9 || (h === 9 && m >= 15)) && (h < 15 || (h === 15 && m <= 30));
+}
 
-    // Wake up proxy + fetch expiries
-    const exps = await apiGet("/expiries?symbol=NIFTY");
+async function startup() {
+  // Always load TV chart first — works 24/7, no proxy needed
+  loadTvChart();
+
+  // Always open the app — don't block on NSE data
+  document.getElementById("ls").style.display = "none";
+  document.getElementById("shell").style.display = "flex";
+
+  // Resize observer for OI chart
+  new ResizeObserver(() => renderOi()).observe(document.getElementById("oi-wrap"));
+
+  // Show market status message
+  if (!isMarketHours()) {
+    toast("Market closed. Charts work 24/7. Option chain available 9:15 AM – 3:30 PM.", "warn");
+    document.getElementById("chain-scroll").innerHTML = `
+      <div class="chain-err">
+        <span>🕐 Market is closed</span>
+        <span style="font-size:10px;color:var(--muted);line-height:1.6">
+          NSE option chain data is only available during market hours.<br><br>
+          <b style="color:var(--text)">Monday – Friday: 9:15 AM – 3:30 PM IST</b><br><br>
+          Charts and all other features work 24/7.
+        </span>
+        <button class="retry-btn" onclick="chainFetchAttempt=0;tryFetchAll()">↺ Try Anyway</button>
+      </div>`;
+    return;
+  }
+
+  // Market is open — fetch data
+  await tryFetchAll();
+
+  // Auto refresh every 30 seconds during market hours
+  setInterval(() => {
+    if (isMarketHours()) { chainFetchAttempt = 0; fetchChain(); }
+  }, 30000);
+}
+
+async function tryFetchAll() {
+  showSpin(true);
+  try {
+    const exps = await apiGet("/expiries?symbol=" + idx);
     expiries = Array.isArray(exps) ? exps : [];
     expiry = expiries[0] || "";
-
-    document.getElementById("lst").textContent = "Loading option chain…";
+    renderExpiryBtns();
     await fetchChain();
-
-    document.getElementById("ls").style.display = "none";
-    document.getElementById("shell").style.display = "flex";
-
-    // Resize observer for OI chart
-    new ResizeObserver(() => renderOi()).observe(document.getElementById("oi-wrap"));
-
-    // Auto refresh every 30 seconds during market hours
-    setInterval(() => {
-      const h = new Date().getHours(), m = new Date().getMinutes();
-      const open = (h > 9 || (h === 9 && m >= 15)) && (h < 15 || (h === 15 && m <= 30));
-      if (open) { chainFetchAttempt = 0; fetchChain(); }
-    }, 30000);
-
-    toast("Optiq Lite connected ✓");
+    toast("Live data loaded ✓");
   } catch(e) {
-    document.getElementById("lst").textContent = "Connection failed: " + e.message + "\n\nCheck your internet and try again.";
+    toast("NSE data unavailable: " + e.message, "err");
+    document.getElementById("chain-scroll").innerHTML = `
+      <div class="chain-err">
+        <span>⚠ Could not load data</span>
+        <span style="font-size:10px;color:var(--muted);line-height:1.5">${e.message}</span>
+        <button class="retry-btn" onclick="chainFetchAttempt=0;tryFetchAll()">↺ Retry</button>
+      </div>`;
   }
+  showSpin(false);
 }
 
 window.addEventListener("load", startup);
