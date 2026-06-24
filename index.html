@@ -243,7 +243,6 @@ input,select{font-family:inherit;outline:none;}
         <button class="ctb" onclick="setCType('3',this)">Area</button>
       </div>
       <div id="tv-wrap">
-        <iframe id="tv-frame" src="" allowfullscreen></iframe>
       </div>
     </div>
 
@@ -397,7 +396,7 @@ const PROXY = "https://nse-proxy-ti0m.onrender.com";
 
 // Correct TradingView symbols
 const TV = {
-  NIFTY:  { tv:"NSE:NIFTY",   label:"NIFTY 50",  lot:75  },
+  NIFTY:  { tv:"NSE:NIFTY50", label:"NIFTY 50",  lot:75  },
   SENSEX: { tv:"BSE:SENSEX",  label:"SENSEX",    lot:20  },
 };
 
@@ -461,21 +460,15 @@ function setCapitalPreset(val){
 // ═══════════════════════════════════
 function loadTV(){
   const sym=TV[idx].tv;
-  const url=`https://s.tradingview.com/widgetembed/?frameElementId=tv-frame`
-    +`&symbol=${encodeURIComponent(sym)}`
-    +`&interval=${currentTf}`
-    +`&hidesidetoolbar=0`
-    +`&hidetoptoolbar=0`
-    +`&symboledit=0`
-    +`&saveimage=0`
-    +`&toolbarbg=0D1320`
-    +`&theme=dark`
-    +`&style=${currentStyle}`
-    +`&timezone=Asia%2FKolkata`
-    +`&withdateranges=1`
-    +`&locale=en`
-    +`&allow_symbol_change=0`;
-  document.getElementById("tv-frame").src=url;
+  const cid="tvc"+Date.now();
+  const wrap=document.getElementById("tv-wrap");
+  wrap.innerHTML=`<div class="tradingview-widget-container" style="height:100%;width:100%"><div id="${cid}" style="height:calc(100% - 0px);width:100%"></div></div>`;
+  const s=document.createElement("script");
+  s.src="https://s3.tradingview.com/tv.js";
+  s.onload=function(){
+    new TradingView.widget({"autosize":true,"symbol":sym,"interval":currentTf,"timezone":"Asia/Kolkata","theme":"dark","style":currentStyle,"locale":"en","toolbar_bg":"#0D1320","enable_publishing":false,"hide_top_toolbar":false,"save_image":false,"container_id":cid});
+  };
+  wrap.appendChild(s);
 }
 
 function setTf(tf,btn){
