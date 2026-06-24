@@ -13,93 +13,69 @@ input,select{font-family:inherit;outline:none;}
 ::-webkit-scrollbar{width:3px;height:3px;}
 ::-webkit-scrollbar-thumb{background:#1A2436;border-radius:2px;}
 :root{
-  --bg:#070B12;--panel:#0D1320;--panel2:#111826;
-  --border:#1A2436;--border2:#243044;
+  --bg:#070B12;--panel:#0D1320;--border:#1A2436;--border2:#243044;
   --text:#C8D4E8;--muted:#4A6080;--faint:#0F1720;
   --blue:#3B82F6;--cyan:#22D3EE;--purple:#A78BFA;
   --green:#22C55E;--red:#EF4444;--amber:#F59E0B;
 }
-
-/* ── Shell ── */
 #shell{display:flex;flex-direction:column;height:100vh;height:100dvh;}
-#topbar{background:var(--panel);border-bottom:1px solid var(--border);padding:8px 12px;display:flex;align-items:center;gap:8px;flex-shrink:0;min-height:52px;}
+#topbar{background:var(--panel);border-bottom:1px solid var(--border);padding:8px 12px;display:flex;align-items:center;gap:8px;flex-shrink:0;min-height:50px;}
 #bottomnav{background:var(--panel);border-top:1px solid var(--border);display:flex;flex-shrink:0;}
 #pages{flex:1;overflow:hidden;position:relative;min-height:0;}
-
-/* ── Topbar ── */
-.logo{font-size:16px;font-weight:900;color:var(--blue);letter-spacing:2px;line-height:1.1;}
-.logo-s{font-size:7px;color:var(--muted);letter-spacing:3px;display:block;margin-top:1px;}
-.idx-btns{display:flex;gap:5px;margin-left:8px;}
-.idx-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:10px;font-weight:700;padding:4px 10px;border-radius:14px;transition:all .15s;}
+.logo{font-size:15px;font-weight:900;color:var(--blue);letter-spacing:2px;line-height:1.1;}
+.logo-s{font-size:7px;color:var(--muted);letter-spacing:2px;display:block;}
+.idx-btns{display:flex;gap:5px;}
+.idx-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:10px;font-weight:700;padding:4px 10px;border-radius:14px;}
 .idx-btn.on{border-color:var(--cyan);color:var(--cyan);background:rgba(34,211,238,.08);}
-.spot-wrap{margin-left:4px;}
-.spot-p{font-size:15px;font-weight:700;line-height:1;}
-.spot-m{font-size:9px;color:var(--muted);margin-top:1px;display:flex;align-items:center;gap:3px;}
-.ldot{width:5px;height:5px;border-radius:50%;display:inline-block;}
-.ldot.live{background:var(--green);animation:blink 1.5s ease-in-out infinite;}
-.ldot.off{background:var(--muted);}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.spot-box{margin-left:2px;}
+.spot-p{font-size:14px;font-weight:700;line-height:1;}
+.spot-ch{font-size:9px;margin-top:1px;font-weight:600;}
 .tr{margin-left:auto;display:flex;align-items:center;gap:8px;}
-.sm{text-align:right;}
-.sm .sv{font-size:12px;font-weight:700;}
-.sm .sl{font-size:7px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;}
-.spin{width:13px;height:13px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite;display:none;}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* ── Bottom Nav ── */
-.ni{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7px 2px 5px;gap:2px;background:none;color:var(--muted);font-size:8px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;position:relative;transition:color .15s;}
+.sm .sv{font-size:11px;font-weight:700;}
+.sm .sl{font-size:7px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7px 2px 5px;gap:2px;background:none;color:var(--muted);font-size:8px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;position:relative;}
 .ni.on{color:var(--blue);}
-.ni svg{width:19px;height:19px;stroke-width:1.8;flex-shrink:0;}
+.ni svg{width:19px;height:19px;stroke-width:1.8;}
 .nb{position:absolute;top:3px;right:calc(50% - 14px);background:var(--blue);color:#fff;border-radius:8px;padding:0 4px;font-size:7px;font-weight:700;}
-
-/* ── Pages ── */
 .pg{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;}
 .pg.on{display:flex;}
 .pg-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:10px 11px 14px;}
 
-/* ── Chart Page ── */
+/* Chart */
+#chart-topbar{background:var(--panel);border-bottom:1px solid var(--border);padding:6px 10px;display:flex;align-items:center;gap:5px;flex-shrink:0;overflow-x:auto;}
+.tfb{background:none;border:1px solid var(--border);color:var(--muted);font-size:9px;padding:3px 7px;border-radius:3px;white-space:nowrap;}
+.tfb.on{border-color:var(--amber);color:var(--amber);}
+.ctb{background:none;border:1px solid var(--border);color:var(--muted);font-size:9px;padding:3px 7px;border-radius:3px;white-space:nowrap;}
+.ctb.on{border-color:var(--purple);color:var(--purple);}
+.csep{width:1px;height:14px;background:var(--border);flex-shrink:0;}
 #tv-wrap{flex:1;min-height:0;position:relative;}
-#tv-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
-#chart-topbar{background:var(--panel);border-bottom:1px solid var(--border);padding:6px 10px;display:flex;align-items:center;gap:6px;flex-shrink:0;overflow-x:auto;}
-.tf-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:9px;padding:3px 8px;border-radius:3px;white-space:nowrap;transition:all .15s;}
-.tf-btn.on{border-color:var(--amber);color:var(--amber);}
-.chart-type-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:9px;padding:3px 8px;border-radius:3px;white-space:nowrap;transition:all .15s;}
-.chart-type-btn.on{border-color:var(--purple);color:var(--purple);}
-.chart-sep{width:1px;height:16px;background:var(--border);flex-shrink:0;}
+#tv-frame{position:absolute;inset:0;width:100%;height:100%;border:none;}
 
-/* ── Option Chain ── */
-#chain-pg{overflow:hidden;}
+/* Chain */
 .exp-bar{display:flex;gap:5px;overflow-x:auto;padding:7px 10px;border-bottom:1px solid var(--border);flex-shrink:0;}
-.eb{background:none;border:1px solid var(--border);color:var(--muted);font-size:9px;padding:3px 9px;border-radius:10px;white-space:nowrap;transition:all .15s;}
+.eb{background:none;border:1px solid var(--border);color:var(--muted);font-size:9px;padding:3px 9px;border-radius:10px;white-space:nowrap;}
 .eb.on{border-color:var(--purple);color:var(--purple);background:rgba(167,139,250,.08);}
-.chain-info{padding:6px 11px;font-size:10px;color:var(--muted);border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:center;flex-shrink:0;flex-wrap:wrap;}
-.chain-info b{font-weight:700;}
+.chain-info{padding:5px 11px;font-size:10px;color:var(--muted);border-bottom:1px solid var(--border);display:flex;gap:12px;align-items:center;flex-shrink:0;}
 .chain-scroll{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;}
 .ct{width:100%;border-collapse:collapse;font-size:10px;}
 .ct th{background:var(--panel);color:var(--muted);font-size:7.5px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;padding:6px 4px;border-bottom:1px solid var(--border);white-space:nowrap;position:sticky;top:0;z-index:5;}
-.ct th.ce-h{color:rgba(239,68,68,.8);}
-.ct th.pe-h{color:rgba(34,197,94,.8);}
+.ct th.ceh{color:rgba(239,68,68,.8);}
+.ct th.peh{color:rgba(34,197,94,.8);}
 .ct td{padding:5px 4px;border-bottom:1px solid var(--faint);white-space:nowrap;vertical-align:middle;}
-.crow:active td{background:rgba(59,130,246,.05);}
 .crow.atm td{background:rgba(167,139,250,.06);}
-.stk{text-align:center;font-weight:700;font-size:11px;color:var(--text);background:rgba(59,130,246,.05)!important;border-left:1px solid var(--border);border-right:1px solid var(--border);padding:5px 6px!important;}
-.atm-l{font-size:6px;color:var(--purple);display:block;font-weight:600;letter-spacing:.5px;}
+.stk{text-align:center;font-weight:700;font-size:11px;background:rgba(59,130,246,.05)!important;border-left:1px solid var(--border);border-right:1px solid var(--border);padding:5px 6px!important;}
+.atm-l{font-size:6px;color:var(--purple);display:block;font-weight:600;}
 .r{text-align:right;}.l{text-align:left;}
-.ltpv{font-weight:700;color:var(--text);}
-.ivv{color:#7DD3FC;font-size:9px;}
-.dv{color:var(--cyan);font-size:9px;}
-.oiv{color:var(--muted);font-size:8.5px;}
-.oichg{font-size:8.5px;}
-.oichg.up{color:var(--green);}
-.oichg.dn{color:var(--red);}
-.bb{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:var(--green);font-size:8.5px;font-weight:700;padding:3px 7px;border-radius:3px;min-width:26px;text-align:center;}
-.sb{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:var(--red);font-size:8.5px;font-weight:700;padding:3px 7px;border-radius:3px;min-width:26px;text-align:center;}
-.bs-wrap{display:flex;gap:2px;justify-content:flex-end;}
-.bs-wrap-l{display:flex;gap:2px;}
-.oi-bar-bg{width:36px;height:3px;background:var(--faint);border-radius:1px;display:inline-block;vertical-align:middle;margin-left:2px;}
-.oi-bar-fill{height:100%;border-radius:1px;}
+.ltpv{font-weight:700;}
+.ivv{color:#7DD3FC;font-size:9px;}.dv{color:var(--cyan);font-size:9px;}.oiv{color:var(--muted);font-size:8.5px;}
+.bb{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:var(--green);font-size:8.5px;font-weight:700;padding:3px 7px;border-radius:3px;}
+.sb{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:var(--red);font-size:8.5px;font-weight:700;padding:3px 7px;border-radius:3px;}
+.bs-r{display:flex;gap:2px;justify-content:flex-end;}
+.bs-l{display:flex;gap:2px;}
+.chain-err{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;gap:10px;text-align:center;}
+.retry-btn{background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);color:var(--blue);font-size:10px;font-weight:700;padding:8px 18px;border-radius:5px;}
 
-/* ── Trades/Positions ── */
+/* Positions */
 .pos-card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:9px;}
 .pc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px;}
 .pc-name{font-size:12px;font-weight:700;color:var(--blue);}
@@ -118,7 +94,7 @@ input,select{font-family:inherit;outline:none;}
 .cbuy{background:rgba(34,197,94,.15);color:var(--green);}
 .csell{background:rgba(239,68,68,.15);color:var(--red);}
 
-/* ── Orders ── */
+/* Orders */
 .ord-item{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:11px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center;}
 .o-main{font-size:11px;font-weight:700;}
 .o-sub{font-size:9px;color:var(--muted);margin-top:2px;}
@@ -126,7 +102,7 @@ input,select{font-family:inherit;outline:none;}
 .o-time{font-size:8px;color:var(--muted);margin-top:2px;}
 .exec-b{background:rgba(34,197,94,.12);color:var(--green);padding:2px 6px;border-radius:2px;font-size:7.5px;font-weight:700;}
 
-/* ── Analytics ── */
+/* Analytics */
 .ag{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
 .ac{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px;}
 .acl{font-size:7.5px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
@@ -136,10 +112,20 @@ input,select{font-family:inherit;outline:none;}
 #pf-canvas-wrap{height:150px;}
 #pf-canvas{width:100%;height:100%;}
 
-/* ── Alerts ── */
+/* Capital setting */
+.cap-card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:14px;}
+.cap-label{font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.cap-row{display:flex;gap:8px;align-items:center;}
+.cap-input{background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:14px;padding:10px 12px;border-radius:6px;flex:1;}
+.cap-btn{background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:10px 14px;border-radius:6px;white-space:nowrap;}
+.cap-presets{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.cap-preset{background:none;border:1px solid var(--border);color:var(--muted);font-size:9px;font-weight:700;padding:4px 10px;border-radius:12px;}
+.cap-preset:active{border-color:var(--blue);color:var(--blue);}
+
+/* Alerts */
 .afc{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:13px;margin-bottom:13px;}
 .fl{font-size:8.5px;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;display:block;margin-bottom:4px;}
-.fi{background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:13px;padding:9px 11px;border-radius:6px;width:100%;margin-bottom:9px;transition:border-color .2s;}
+.fi{background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:13px;padding:9px 11px;border-radius:6px;width:100%;margin-bottom:9px;}
 .fi:focus{border-color:var(--blue);}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
 .add-b{background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:11px;border-radius:6px;width:100%;}
@@ -150,25 +136,25 @@ input,select{font-family:inherit;outline:none;}
 .a-price{font-size:13px;font-weight:800;color:var(--amber);}
 .del-b{background:none;border:1px solid var(--border);color:var(--muted);font-size:10px;padding:4px 8px;border-radius:3px;}
 
-/* ── Strategies ── */
+/* Strategies */
 .sc{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:13px;margin-bottom:8px;}
 .sn{font-size:12px;font-weight:700;margin-bottom:3px;}
 .sd{font-size:9px;color:var(--muted);line-height:1.5;margin-bottom:7px;}
 .sl2{font-size:9px;color:var(--blue);margin-bottom:8px;line-height:1.6;}
 .seb{background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);color:var(--blue);font-size:10px;font-weight:700;padding:8px;border-radius:5px;width:100%;}
 
-/* ── More page subtabs ── */
+/* More subtabs */
 .stabs{display:flex;gap:5px;margin-bottom:13px;}
 .stab{background:none;border:1px solid var(--border);color:var(--muted);font-size:9px;font-weight:700;padding:5px 11px;border-radius:14px;}
 .stab.on{border-color:var(--cyan);color:var(--cyan);background:rgba(34,211,238,.08);}
 
-/* ── Order Modal ── */
+/* Modal */
 .mo{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:900;display:none;align-items:flex-end;justify-content:center;}
 .mo.on{display:flex;}
 .ms{background:var(--panel);border-radius:16px 16px 0 0;padding:18px 14px 30px;width:100%;max-width:480px;animation:su .22s ease;}
 @keyframes su{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .mh{width:34px;height:3px;background:var(--border2);border-radius:2px;margin:0 auto 14px;}
-.mt{font-size:9px;color:var(--blue);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;}
+.mt2{font-size:9px;color:var(--blue);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;}
 .mm{font-size:19px;font-weight:800;margin-bottom:2px;}
 .ms2{font-size:10px;color:var(--muted);margin-bottom:16px;}
 .mfr{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px;}
@@ -178,209 +164,190 @@ input,select{font-family:inherit;outline:none;}
 .dgv{font-size:12px;font-weight:600;margin-top:1px;}
 .mi{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.15);border-radius:6px;padding:9px 12px;margin-bottom:12px;font-size:11px;color:var(--muted);}
 .mi b{color:var(--blue);}
-.ok2{color:var(--green);font-weight:700;}
-.ec{color:var(--red);font-weight:700;}
+.ok2{color:var(--green);font-weight:700;}.ec{color:var(--red);font-weight:700;}
 .mbr{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .bcn{background:none;border:1px solid var(--border);color:var(--muted);font-size:12px;font-weight:600;padding:13px;border-radius:8px;}
 .bcf{color:#fff;font-size:12px;font-weight:700;letter-spacing:1px;padding:13px;border-radius:8px;}
 
-/* ── Toast ── */
+/* Toast */
 #tw{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9999;pointer-events:none;width:88%;max-width:320px;}
 .toast{background:var(--panel);border-left:3px solid var(--green);border-radius:7px;padding:9px 13px;font-size:11px;font-weight:600;box-shadow:0 4px 18px rgba(0,0,0,.6);animation:tfi .22s ease;margin-bottom:5px;}
 .toast.err{border-left-color:var(--red);}
 .toast.warn{border-left-color:var(--amber);}
 @keyframes tfi{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── Alert popup ── */
-#ap{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--amber);border-radius:10px;padding:12px 16px;z-index:9998;display:none;width:88%;max-width:340px;box-shadow:0 4px 24px rgba(245,158,11,.3);}
+/* Alert popup */
+#apop{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--amber);border-radius:10px;padding:12px 16px;z-index:9998;display:none;width:88%;max-width:340px;box-shadow:0 4px 24px rgba(245,158,11,.3);}
 .apt{font-size:8px;color:var(--amber);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;}
 .apm{font-size:12px;font-weight:700;}
 
-/* ── Loading ── */
+/* Loading */
 #ls{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;}
-.ll{font-size:40px;font-weight:900;color:var(--blue);letter-spacing:4px;}
-.ls2{font-size:9px;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin-top:3px;margin-bottom:32px;}
-.lspin{width:30px;height:30px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;}
-.lst{font-size:10px;color:var(--muted);margin-top:12px;text-align:center;padding:0 30px;line-height:1.6;}
+.ll{font-size:38px;font-weight:900;color:var(--blue);letter-spacing:4px;}
+.ls2{font-size:9px;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin-top:3px;margin-bottom:30px;}
+.lspin{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.lst{font-size:10px;color:var(--muted);margin-top:12px;text-align:center;padding:0 30px;line-height:1.7;}
 
-/* ── Empty ── */
 .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 20px;text-align:center;}
 .ei{font-size:36px;margin-bottom:10px;opacity:.35;}
 .et{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;}
-
 .pos{color:var(--green);}.neg{color:var(--red);}
-
-/* ── OI Section below chart ── */
-#oi-section{height:170px;border-top:1px solid var(--border);flex-shrink:0;display:flex;flex-direction:column;}
-.oi-hdr{display:flex;align-items:center;padding:5px 10px;background:var(--panel);border-bottom:1px solid var(--border);flex-shrink:0;}
-.oi-ttl{font-size:8.5px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
-.oi-mbts{display:flex;gap:4px;margin-left:auto;}
-.omb{background:none;border:1px solid var(--border);color:var(--muted);font-size:8px;padding:2px 7px;border-radius:2px;transition:all .15s;}
-.omb.on{border-color:var(--amber);color:var(--amber);}
-#oi-wrap{flex:1;overflow:hidden;position:relative;}
-#oi-canvas{position:absolute;inset:0;}
-
-/* chain loading state */
-.chain-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px;gap:12px;color:var(--muted);}
-.chain-err{display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px;gap:10px;color:var(--red);font-size:11px;text-align:center;padding:20px;}
-.retry-btn{background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);color:var(--blue);font-size:10px;font-weight:700;padding:8px 16px;border-radius:5px;margin-top:6px;}
 </style>
 </head>
 <body>
 
-<!-- Loading Screen -->
 <div id="ls">
   <div class="ll">OPTIQ</div>
   <div class="ls2">Paper Trader</div>
   <div class="lspin"></div>
-  <div class="lst" id="lst">Connecting to NSE India…<br>First load may take 30–40 seconds</div>
+  <div class="lst" id="lst">Loading…</div>
 </div>
 
-<!-- Alert Popup -->
-<div id="ap"><div class="apt">🔔 Price Alert</div><div class="apm" id="apm"></div></div>
-
-<!-- Toast -->
+<div id="apop"><div class="apt">🔔 Alert</div><div class="apm" id="apm"></div></div>
 <div id="tw"></div>
 
-<!-- App -->
 <div id="shell" style="display:none">
-
-  <!-- Topbar -->
   <div id="topbar">
-    <div>
-      <div class="logo">OPTIQ<span class="logo-s">PAPER TRADER</span></div>
-    </div>
+    <div><div class="logo">OPTIQ<span class="logo-s">PAPER TRADER</span></div></div>
     <div class="idx-btns">
       <button class="idx-btn on" onclick="setIdx('NIFTY',this)">NIFTY</button>
       <button class="idx-btn" onclick="setIdx('SENSEX',this)">SENSEX</button>
     </div>
-    <div class="spot-wrap">
+    <div class="spot-box">
       <div class="spot-p" id="sp">—</div>
-      <div class="spot-m">
-        <span class="ldot live" id="ldot"></span>
-        <span id="sc" style="font-size:9px;font-weight:600"></span>
-      </div>
+      <div class="spot-ch" id="sc"></div>
     </div>
     <div class="tr">
-      <div class="sm"><div class="sv" id="tm" style="color:var(--blue)">₹5,00,000</div><div class="sl">MARGIN</div></div>
-      <div class="sm"><div class="sv" id="tp">₹0</div><div class="sl">P&amp;L</div></div>
-      <div class="spin" id="spin"></div>
+      <div class="sm" style="text-align:right"><div class="sv" id="tm" style="color:var(--blue)">₹0</div><div class="sl">MARGIN</div></div>
+      <div class="sm" style="text-align:right"><div class="sv" id="tp">₹0</div><div class="sl">P&amp;L</div></div>
     </div>
   </div>
 
-  <!-- Pages -->
   <div id="pages">
 
-    <!-- ── CHART PAGE ── -->
+    <!-- CHART -->
     <div class="pg on" id="chart-pg">
       <div id="chart-topbar">
-        <span style="font-size:9px;color:var(--muted);letter-spacing:.5px;white-space:nowrap;flex-shrink:0">TIMEFRAME</span>
-        <div class="chart-sep"></div>
-        <button class="tf-btn" onclick="setTf('1',this)">1m</button>
-        <button class="tf-btn" onclick="setTf('3',this)">3m</button>
-        <button class="tf-btn on" onclick="setTf('5',this)">5m</button>
-        <button class="tf-btn" onclick="setTf('15',this)">15m</button>
-        <button class="tf-btn" onclick="setTf('30',this)">30m</button>
-        <button class="tf-btn" onclick="setTf('60',this)">1H</button>
-        <button class="tf-btn" onclick="setTf('D',this)">1D</button>
-        <div class="chart-sep"></div>
-        <span style="font-size:9px;color:var(--muted);letter-spacing:.5px;white-space:nowrap;flex-shrink:0">TYPE</span>
-        <button class="chart-type-btn on" onclick="setChartType('candlestick',this)">Candles</button>
-        <button class="chart-type-btn" onclick="setChartType('bars',this)">Bars</button>
-        <button class="chart-type-btn" onclick="setChartType('line',this)">Line</button>
-        <button class="chart-type-btn" onclick="setChartType('area',this)">Area</button>
+        <button class="tfb" onclick="setTf('1',this)">1m</button>
+        <button class="tfb" onclick="setTf('3',this)">3m</button>
+        <button class="tfb on" onclick="setTf('5',this)">5m</button>
+        <button class="tfb" onclick="setTf('15',this)">15m</button>
+        <button class="tfb" onclick="setTf('30',this)">30m</button>
+        <button class="tfb" onclick="setTf('60',this)">1H</button>
+        <button class="tfb" onclick="setTf('D',this)">1D</button>
+        <div class="csep"></div>
+        <button class="ctb on" onclick="setCType('1',this)">Candles</button>
+        <button class="ctb" onclick="setCType('0',this)">Bars</button>
+        <button class="ctb" onclick="setCType('2',this)">Line</button>
+        <button class="ctb" onclick="setCType('3',this)">Area</button>
       </div>
       <div id="tv-wrap">
-        <iframe id="tv-frame" src="" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
-      </div>
-      <div id="oi-section">
-        <div class="oi-hdr">
-          <span class="oi-ttl">OI Analysis</span>
-          <div class="oi-mbts">
-            <button class="omb on" onclick="setOiMode('oi',this)">OI</button>
-            <button class="omb" onclick="setOiMode('iv',this)">IV Skew</button>
-            <button class="omb" onclick="setOiMode('pcr',this)">PCR</button>
-          </div>
-        </div>
-        <div id="oi-wrap"><canvas id="oi-canvas"></canvas></div>
+        <iframe id="tv-frame" src="" allowfullscreen></iframe>
       </div>
     </div>
 
-    <!-- ── CHAIN PAGE ── -->
+    <!-- CHAIN -->
     <div class="pg" id="chain-pg">
       <div class="exp-bar" id="exp-bar"></div>
-      <div class="chain-info" id="chain-info">
+      <div class="chain-info">
         <span>PCR: <b id="pcr" style="color:var(--green)">—</b></span>
         <span>ATM: <b id="atm-v" style="color:var(--purple)">—</b></span>
-        <span>Max Pain: <b id="mp-v" style="color:var(--amber)">—</b></span>
-        <button onclick="fetchChain()" style="margin-left:auto;background:none;border:1px solid var(--border);color:var(--muted);font-size:9px;padding:3px 8px;border-radius:3px;">↺ Refresh</button>
+        <span>MaxPain: <b id="mp-v" style="color:var(--amber)">—</b></span>
+        <button onclick="loadChain()" style="margin-left:auto;background:none;border:1px solid var(--border);color:var(--muted);font-size:9px;padding:3px 8px;border-radius:3px;">↺</button>
       </div>
       <div class="chain-scroll" id="chain-scroll">
-        <div class="chain-loading"><div class="spin" style="display:inline-block;width:20px;height:20px"></div><span style="font-size:11px;color:var(--muted)">Loading option chain…</span></div>
+        <div class="chain-err"><span style="font-size:11px;color:var(--muted)">Tap ↺ to load chain</span></div>
       </div>
     </div>
 
-    <!-- ── TRADES PAGE ── -->
+    <!-- TRADES -->
     <div class="pg" id="trades-pg">
       <div class="pg-scroll" id="pos-content">
         <div class="empty"><div class="ei">📭</div><div class="et">No open positions</div></div>
       </div>
     </div>
 
-    <!-- ── ANALYTICS PAGE ── -->
+    <!-- ANALYTICS -->
     <div class="pg" id="an-pg">
       <div class="pg-scroll">
         <div class="ag" id="an-grid"></div>
         <div id="payoff-wrap">
-          <div class="sec-t">Position Payoff at Expiry</div>
+          <div class="sec-t">Payoff at Expiry</div>
           <div id="pf-canvas-wrap"><canvas id="pf-canvas"></canvas></div>
         </div>
         <div id="an-pos"></div>
       </div>
     </div>
 
-    <!-- ── MORE PAGE ── -->
+    <!-- MORE -->
     <div class="pg" id="more-pg">
       <div class="pg-scroll">
         <div class="stabs">
-          <button class="stab on" onclick="setMoreTab('orders',this)">Orders</button>
+          <button class="stab on" onclick="setMoreTab('capital',this)">Capital</button>
+          <button class="stab" onclick="setMoreTab('orders',this)">Orders</button>
           <button class="stab" onclick="setMoreTab('alerts',this)">Alerts</button>
           <button class="stab" onclick="setMoreTab('strategy',this)">Strategies</button>
         </div>
-        <div id="mt-orders">
+
+        <!-- Capital -->
+        <div id="mt-capital">
+          <div class="cap-card">
+            <div class="cap-label">Set Your Trading Capital</div>
+            <div class="cap-row">
+              <input class="cap-input" id="cap-inp" type="number" placeholder="Enter amount"/>
+              <button class="cap-btn" onclick="setCapital()">SET</button>
+            </div>
+            <div class="cap-presets">
+              <button class="cap-preset" onclick="setCapitalPreset(10000)">₹10,000</button>
+              <button class="cap-preset" onclick="setCapitalPreset(25000)">₹25,000</button>
+              <button class="cap-preset" onclick="setCapitalPreset(50000)">₹50,000</button>
+              <button class="cap-preset" onclick="setCapitalPreset(100000)">₹1,00,000</button>
+              <button class="cap-preset" onclick="setCapitalPreset(500000)">₹5,00,000</button>
+              <button class="cap-preset" onclick="setCapitalPreset(1000000)">₹10,00,000</button>
+            </div>
+            <div style="margin-top:12px;font-size:10px;color:var(--muted)">
+              Current capital: <b style="color:var(--blue)" id="cur-cap">₹5,00,000</b><br>
+              <span style="font-size:9px;color:var(--muted)">⚠ Changing capital will reset all positions and orders.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders -->
+        <div id="mt-orders" style="display:none">
           <div id="ord-content"><div class="empty"><div class="ei">📋</div><div class="et">No orders yet</div></div></div>
         </div>
+
+        <!-- Alerts -->
         <div id="mt-alerts" style="display:none">
           <div class="afc">
             <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">New Price Alert</div>
             <div class="frow">
-              <div><label class="fl">Index</label>
-                <select class="fi" id="ai" style="margin-bottom:0"><option value="NIFTY">NIFTY</option><option value="SENSEX">SENSEX</option></select>
-              </div>
-              <div><label class="fl">Condition</label>
-                <select class="fi" id="ac2" style="margin-bottom:0"><option value="above">Goes ABOVE</option><option value="below">Goes BELOW</option></select>
-              </div>
+              <div><label class="fl">Index</label><select class="fi" id="ai" style="margin-bottom:0"><option value="NIFTY">NIFTY</option><option value="SENSEX">SENSEX</option></select></div>
+              <div><label class="fl">Condition</label><select class="fi" id="ac2" style="margin-bottom:0"><option value="above">Goes ABOVE</option><option value="below">Goes BELOW</option></select></div>
             </div>
             <div style="height:8px"></div>
             <label class="fl">Target Price (₹)</label>
-            <input class="fi" id="ap2" type="number" step="0.05" placeholder="e.g. 22500"/>
+            <input class="fi" id="ap2" type="number" step="0.05" placeholder="e.g. 24500"/>
             <label class="fl">Note (optional)</label>
             <input class="fi" id="an2" type="text" placeholder="e.g. Resistance level"/>
             <button class="add-b" onclick="addAlert()">+ ADD ALERT</button>
           </div>
           <div class="sec-t">Active Alerts</div>
-          <div id="al-list"><div class="empty" style="padding:16px"><div class="et">No alerts set</div></div></div>
+          <div id="al-list"><div class="empty" style="padding:16px"><div class="et">No alerts</div></div></div>
         </div>
+
+        <!-- Strategies -->
         <div id="mt-strategy" style="display:none">
           <div class="sec-t">Quick Strategies (1 Lot)</div>
           <div id="strat-list"></div>
         </div>
+
       </div>
     </div>
 
-  </div><!-- /pages -->
+  </div>
 
-  <!-- Bottom Nav -->
   <div id="bottomnav">
     <button class="ni on" onclick="setPage('chart',this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Chart
@@ -405,27 +372,14 @@ input,select{font-family:inherit;outline:none;}
 <div class="mo" id="om" onclick="closeMo(event)">
   <div class="ms" onclick="event.stopPropagation()">
     <div class="mh"></div>
-    <div class="mt">Paper Order</div>
+    <div class="mt2">Paper Order</div>
     <div class="mm" id="m-main"></div>
     <div class="ms2" id="m-sub"></div>
     <div class="mfr">
-      <div>
-        <label class="fl">Lots</label>
-        <input class="fi" id="m-lots" type="number" min="1" max="100" value="1" oninput="updMo()"/>
-        <div class="mhint" id="m-qty">= 75 qty</div>
-      </div>
-      <div>
-        <label class="fl">Order Type</label>
-        <select class="fi" id="m-ot" onchange="updMo()">
-          <option value="MARKET">MARKET</option>
-          <option value="LIMIT">LIMIT</option>
-        </select>
-      </div>
+      <div><label class="fl">Lots</label><input class="fi" id="m-lots" type="number" min="1" max="100" value="1" oninput="updMo()"/><div class="mhint" id="m-qty">= 75 qty</div></div>
+      <div><label class="fl">Order Type</label><select class="fi" id="m-ot" onchange="updMo()"><option value="MARKET">MARKET</option><option value="LIMIT">LIMIT</option></select></div>
     </div>
-    <div id="m-lw" style="display:none">
-      <label class="fl">Limit Price (₹)</label>
-      <input class="fi" id="m-lp" type="number" step="0.05" placeholder="0.00"/>
-    </div>
+    <div id="m-lw" style="display:none"><label class="fl">Limit Price (₹)</label><input class="fi" id="m-lp" type="number" step="0.05" placeholder="0.00"/></div>
     <div class="dg" id="m-data"></div>
     <div class="mi" id="m-marg"></div>
     <div class="mbr">
@@ -436,809 +390,600 @@ input,select{font-family:inherit;outline:none;}
 </div>
 
 <script>
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 // CONFIG
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 const PROXY = "https://nse-proxy-ti0m.onrender.com";
-const CASH0 = 500000;
 
-// TradingView symbols for each index
-const TV_SYMBOLS = {
-  NIFTY:  "NSE:NIFTY50",
-  SENSEX: "BSE:SENSEX",
-};
-
-const INSTS = {
-  NIFTY:  { label:"NIFTY 50",  lot:75,  nseSymbol:"NIFTY"  },
-  SENSEX: { label:"SENSEX",    lot:20,  nseSymbol:"SENSEX" },
+// Correct TradingView symbols
+const TV = {
+  NIFTY:  { tv:"NSE:NIFTY",   label:"NIFTY 50",  lot:75  },
+  SENSEX: { tv:"BSE:SENSEX",  label:"SENSEX",    lot:20  },
 };
 
 const STRATS = [
-  {n:"Long Straddle",  d:"Buy ATM CE+PE. Profit if market moves big either way.",    legs:[["BUY","CE",0],["BUY","PE",0]]},
-  {n:"Short Straddle", d:"Sell ATM CE+PE. Profit if market stays flat.",              legs:[["SELL","CE",0],["SELL","PE",0]]},
-  {n:"Bull Call Spread",d:"Buy ATM CE, Sell OTM CE. Bullish with limited risk.",      legs:[["BUY","CE",0],["SELL","CE",1]]},
-  {n:"Bear Put Spread", d:"Buy ATM PE, Sell OTM PE. Bearish with limited risk.",      legs:[["BUY","PE",0],["SELL","PE",-1]]},
-  {n:"Long Strangle",  d:"Buy OTM CE+PE. Cheaper than straddle, needs bigger move.", legs:[["BUY","CE",1],["BUY","PE",-1]]},
-  {n:"Short Strangle", d:"Sell OTM CE+PE. Wider range to profit from time decay.",   legs:[["SELL","CE",1],["SELL","PE",-1]]},
-  {n:"Iron Condor",    d:"Sell strangle + buy further OTM wings. Great for low VIX.",legs:[["BUY","PE",-2],["SELL","PE",-1],["SELL","CE",1],["BUY","CE",2]]},
-  {n:"Bull Put Spread",d:"Sell ATM PE, Buy lower PE. Bullish, collect premium.",      legs:[["SELL","PE",0],["BUY","PE",-1]]},
+  {n:"Long Straddle",  d:"Buy ATM CE+PE. Profit from big move.",         legs:[["BUY","CE",0],["BUY","PE",0]]},
+  {n:"Short Straddle", d:"Sell ATM CE+PE. Profit if market stays flat.", legs:[["SELL","CE",0],["SELL","PE",0]]},
+  {n:"Bull Call Spread",d:"Buy ATM CE, Sell OTM CE. Limited risk.",      legs:[["BUY","CE",0],["SELL","CE",1]]},
+  {n:"Bear Put Spread", d:"Buy ATM PE, Sell OTM PE. Limited risk.",      legs:[["BUY","PE",0],["SELL","PE",-1]]},
+  {n:"Long Strangle",  d:"Buy OTM CE+PE. Cheaper than straddle.",       legs:[["BUY","CE",1],["BUY","PE",-1]]},
+  {n:"Short Strangle", d:"Sell OTM CE+PE. Wider profit zone.",          legs:[["SELL","CE",1],["SELL","PE",-1]]},
+  {n:"Iron Condor",    d:"Sell strangle + buy far OTM wings.",          legs:[["BUY","PE",-2],["SELL","PE",-1],["SELL","CE",1],["BUY","CE",2]]},
+  {n:"Bull Put Spread",d:"Sell ATM PE, Buy lower PE. Collect premium.", legs:[["SELL","PE",0],["BUY","PE",-1]]},
 ];
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 // STATE
-// ═══════════════════════════════════════════
-let idx = "NIFTY";
-let expiry = "", expiries = [];
-let chain = null, spots = {}, prevSpot = null;
-let cash = CASH0, positions = [], orders = [], alerts = [];
-let alertId = 1, pendingOrder = null;
-let currentTf = "5", currentChartType = "candlestick", oiMode = "oi";
-let chainFetchAttempt = 0;
+// ═══════════════════════════════════
+let idx="NIFTY", expiry="", expiries=[];
+let chain=null, spots={}, prevSpot=null;
+let capital=500000, cash=500000;
+let positions=[], orders=[], alerts=[];
+let alertId=1, pendingOrder=null;
+let currentTf="5", currentStyle="1";
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 // HELPERS
-// ═══════════════════════════════════════════
-const f2  = n => n == null ? "—" : Number(n).toFixed(2);
-const fI  = (n, d=0) => n == null ? "—" : "₹" + Math.abs(Number(n)).toLocaleString("en-IN", {minimumFractionDigits:d, maximumFractionDigits:d});
+// ═══════════════════════════════════
+const f2  = n => n==null?"—":Number(n).toFixed(2);
+const fI  = (n,d=0) => n==null?"—":"₹"+Math.abs(Number(n)).toLocaleString("en-IN",{minimumFractionDigits:d,maximumFractionDigits:d});
 const fL  = n => { if(n==null)return"—"; if(n>=10000000)return(n/10000000).toFixed(1)+"Cr"; if(n>=100000)return(n/100000).toFixed(1)+"L"; if(n>=1000)return(n/1000).toFixed(0)+"K"; return String(n); };
-const fSign = n => (n>=0?"+":"")+fI(Math.abs(n));
 
-function showSpin(v) { document.getElementById("spin").style.display = v ? "inline-block" : "none"; }
-function toast(msg, t="ok") {
-  const w = document.getElementById("tw");
-  const el = document.createElement("div");
-  el.className = "toast" + (t==="err"?" err":t==="warn"?" warn":"");
-  el.textContent = msg;
-  w.appendChild(el);
-  setTimeout(() => el.remove(), 3200);
+function toast(msg,t="ok"){
+  const w=document.getElementById("tw");
+  const el=document.createElement("div");
+  el.className="toast"+(t==="err"?" err":t==="warn"?" warn":"");
+  el.textContent=msg; w.appendChild(el);
+  setTimeout(()=>el.remove(),3200);
 }
 
-// ═══════════════════════════════════════════
-// API
-// ═══════════════════════════════════════════
-async function apiGet(path) {
-  const r = await fetch(PROXY + path);
-  if (!r.ok) throw new Error("HTTP " + r.status);
-  return r.json();
+// ═══════════════════════════════════
+// CAPITAL MANAGEMENT
+// ═══════════════════════════════════
+function setCapital(){
+  const val=parseInt(document.getElementById("cap-inp").value);
+  if(!val||val<1000){toast("Minimum capital is ₹1,000","err");return;}
+  if(!confirm(`Reset capital to ₹${val.toLocaleString("en-IN")}? This will clear all positions and orders.`))return;
+  capital=val; cash=val; positions=[]; orders=[];
+  document.getElementById("cap-inp").value="";
+  document.getElementById("cur-cap").textContent=fI(val);
+  updTop(); renderPos(); renderOrd();
+  toast(`Capital set to ${fI(val)} ✓`);
 }
 
-// ═══════════════════════════════════════════
+function setCapitalPreset(val){
+  document.getElementById("cap-inp").value=val;
+  setCapital();
+}
+
+// ═══════════════════════════════════
 // TRADINGVIEW CHART
-// ═══════════════════════════════════════════
-function loadTvChart() {
-  const symbol = TV_SYMBOLS[idx];
-  const theme = "dark";
-  const src = `https://s.tradingview.com/widgetembed/?frameElementId=tv-frame&symbol=${encodeURIComponent(symbol)}&interval=${currentTf}&hidesidetoolbar=0&hidetoptoolbar=0&symboledit=0&saveimage=0&toolbarbg=0D1320&studies=[]&theme=${theme}&style=${getStyleNum()}&timezone=Asia%2FKolkata&withdateranges=1&showpopupbutton=0&allow_symbol_change=0&locale=en&utm_source=optiq&utm_medium=widget`;
-  document.getElementById("tv-frame").src = src;
+// ═══════════════════════════════════
+function loadTV(){
+  const sym=TV[idx].tv;
+  const url=`https://s.tradingview.com/widgetembed/?frameElementId=tv-frame`
+    +`&symbol=${encodeURIComponent(sym)}`
+    +`&interval=${currentTf}`
+    +`&hidesidetoolbar=0`
+    +`&hidetoptoolbar=0`
+    +`&symboledit=0`
+    +`&saveimage=0`
+    +`&toolbarbg=0D1320`
+    +`&theme=dark`
+    +`&style=${currentStyle}`
+    +`&timezone=Asia%2FKolkata`
+    +`&withdateranges=1`
+    +`&locale=en`
+    +`&allow_symbol_change=0`;
+  document.getElementById("tv-frame").src=url;
 }
 
-function getStyleNum() {
-  const map = { candlestick:"1", bars:"0", line:"2", area:"3" };
-  return map[currentChartType] || "1";
-}
-
-function setTf(tf, btn) {
-  currentTf = tf;
-  document.querySelectorAll(".tf-btn").forEach(b => b.classList.remove("on"));
+function setTf(tf,btn){
+  currentTf=tf;
+  document.querySelectorAll(".tfb").forEach(b=>b.classList.remove("on"));
   btn.classList.add("on");
-  loadTvChart();
+  loadTV();
 }
 
-function setChartType(type, btn) {
-  currentChartType = type;
-  document.querySelectorAll(".chart-type-btn").forEach(b => b.classList.remove("on"));
+function setCType(style,btn){
+  currentStyle=style;
+  document.querySelectorAll(".ctb").forEach(b=>b.classList.remove("on"));
   btn.classList.add("on");
-  loadTvChart();
+  loadTV();
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 // INDEX SWITCH
-// ═══════════════════════════════════════════
-async function setIdx(i, btn) {
-  idx = i;
-  document.querySelectorAll(".idx-btn").forEach(b => b.classList.remove("on"));
+// ═══════════════════════════════════
+async function setIdx(i,btn){
+  idx=i;
+  document.querySelectorAll(".idx-btn").forEach(b=>b.classList.remove("on"));
   btn.classList.add("on");
-  chain = null; prevSpot = null;
-  loadTvChart();
-  showSpin(true);
-  try {
-    const exps = await apiGet(`/expiries?symbol=${i}`);
-    expiries = Array.isArray(exps) ? exps : [];
-    expiry = expiries[0] || "";
-  } catch(e) { expiries = []; expiry = ""; }
-  showSpin(false);
-  renderExpiryBtns();
-  await fetchChain();
+  chain=null; prevSpot=null;
+  document.getElementById("sp").textContent="—";
+  document.getElementById("sc").textContent="";
+  loadTV();
+  // Load expiries silently
+  try{
+    const e=await fetch(PROXY+"/expiries?symbol="+i).then(r=>r.json());
+    expiries=Array.isArray(e)?e:[];
+    expiry=expiries[0]||"";
+    renderExpBtns();
+  }catch(e){}
 }
 
-// ═══════════════════════════════════════════
-// FETCH CHAIN (with retry logic)
-// ═══════════════════════════════════════════
-async function fetchChain() {
-  if (!expiry) return;
-  chainFetchAttempt++;
-  showSpin(true);
-
-  const scroll = document.getElementById("chain-scroll");
-  scroll.innerHTML = `<div class="chain-loading"><div class="spin" style="display:inline-block;width:20px;height:20px;border:2px solid #1A2436;border-top-color:#3B82F6;border-radius:50%;animation:spin .7s linear infinite"></div><span style="font-size:11px;color:var(--muted)">Fetching live data…</span></div>`;
-
-  try {
-    const data = await apiGet(`/chain?symbol=${idx}&expiry=${encodeURIComponent(expiry)}`);
-    if (data && data.oc && Object.keys(data.oc).length > 0) {
-      prevSpot = spots[idx] || data.last_price;
-      spots[idx] = data.last_price;
-      chain = data;
-      chainFetchAttempt = 0;
-      updSpot();
-      renderChain();
-      renderOi();
-      checkAlerts();
-      updTop();
-    } else {
-      showChainError("NSE returned empty data. Market may be closed.");
-    }
-  } catch(e) {
-    if (chainFetchAttempt <= 2) {
-      // Auto retry after 5 seconds
-      scroll.innerHTML = `<div class="chain-err"><span>⚠ Connection issue. Retrying in 5s…</span><span style="font-size:10px;color:var(--muted)">${e.message}</span></div>`;
-      setTimeout(fetchChain, 5000);
-    } else {
-      showChainError(e.message);
-    }
-  }
-  showSpin(false);
+// ═══════════════════════════════════
+// CHAIN LOADING
+// ═══════════════════════════════════
+function isMarketOpen(){
+  const now=new Date();
+  const ist=new Date(now.getTime()+(5.5*60*60*1000));
+  const h=ist.getUTCHours(),m=ist.getUTCMinutes(),day=ist.getUTCDay();
+  if(day===0||day===6)return false;
+  return (h>9||(h===9&&m>=15))&&(h<15||(h===15&&m<=30));
 }
 
-function showChainError(msg) {
-  document.getElementById("chain-scroll").innerHTML = `
-    <div class="chain-err">
-      <span>⚠ Could not load option chain</span>
-      <span style="font-size:10px;color:var(--muted);line-height:1.5">${msg}<br><br>NSE blocks data outside market hours (9:15 AM – 3:30 PM).</span>
-      <button class="retry-btn" onclick="chainFetchAttempt=0;fetchChain()">↺ Try Again</button>
+async function loadChain(){
+  const scroll=document.getElementById("chain-scroll");
+  if(!isMarketOpen()){
+    scroll.innerHTML=`<div class="chain-err">
+      <span style="font-size:30px">🕐</span>
+      <span style="font-size:12px;font-weight:700">Market Closed</span>
+      <span style="font-size:10px;color:var(--muted);line-height:1.7">NSE option chain is only available during market hours.<br><b style="color:var(--text)">Mon–Fri · 9:15 AM – 3:30 PM IST</b></span>
+      <button class="retry-btn" onclick="loadChain()">↺ Try Anyway</button>
     </div>`;
-}
+    return;
+  }
 
-// ═══════════════════════════════════════════
-// SPOT DISPLAY
-// ═══════════════════════════════════════════
-function updSpot() {
-  const sp = spots[idx]; if (!sp) return;
-  document.getElementById("sp").textContent = "₹" + sp.toLocaleString("en-IN", {minimumFractionDigits:2, maximumFractionDigits:2});
-  if (prevSpot) {
-    const chg = ((sp - prevSpot) / prevSpot * 100).toFixed(2);
-    const el = document.getElementById("sc");
-    el.textContent = (chg >= 0 ? "+" : "") + chg + "%";
-    el.style.color = chg >= 0 ? "var(--green)" : "var(--red)";
-    document.getElementById("sp").style.color = chg >= 0 ? "var(--green)" : "var(--red)";
+  scroll.innerHTML=`<div class="chain-err"><div class="lspin" style="width:22px;height:22px;border-width:2px"></div><span style="font-size:11px;color:var(--muted)">Loading option chain…</span></div>`;
+
+  try{
+    // Fetch expiries if not loaded
+    if(!expiry){
+      const e=await fetch(PROXY+"/expiries?symbol="+idx).then(r=>r.json());
+      expiries=Array.isArray(e)?e:[]; expiry=expiries[0]||"";
+      renderExpBtns();
+    }
+    const data=await fetch(PROXY+"/chain?symbol="+idx+"&expiry="+encodeURIComponent(expiry)).then(r=>{
+      if(!r.ok)throw new Error("HTTP "+r.status);
+      return r.json();
+    });
+    if(data.error)throw new Error(data.error);
+    if(!data.oc||Object.keys(data.oc).length===0)throw new Error("Empty data");
+    prevSpot=spots[idx]||data.last_price;
+    spots[idx]=data.last_price;
+    chain=data;
+    updSpot(); renderChain(); checkAlerts(); updTop();
+  }catch(e){
+    scroll.innerHTML=`<div class="chain-err">
+      <span style="font-size:24px">⚠️</span>
+      <span style="font-size:12px;font-weight:700;color:var(--red)">Could not load option chain</span>
+      <span style="font-size:10px;color:var(--muted);line-height:1.6">${e.message}</span>
+      <button class="retry-btn" onclick="loadChain()">↺ Retry</button>
+    </div>`;
   }
 }
 
-// ═══════════════════════════════════════════
-// EXPIRY BUTTONS
-// ═══════════════════════════════════════════
-function setExpiry(e) { expiry = e; renderExpiryBtns(); chainFetchAttempt = 0; fetchChain(); }
-function renderExpiryBtns() {
-  document.getElementById("exp-bar").innerHTML = expiries.slice(0, 8).map(e =>
+function setExpiry(e){expiry=e;renderExpBtns();loadChain();}
+function renderExpBtns(){
+  document.getElementById("exp-bar").innerHTML=expiries.slice(0,8).map(e=>
     `<button class="eb ${e===expiry?"on":""}" onclick="setExpiry('${e}')">${e}</button>`
   ).join("");
 }
 
-// ═══════════════════════════════════════════
-// RENDER OPTION CHAIN
-// ═══════════════════════════════════════════
-function renderChain() {
-  renderExpiryBtns();
-  if (!chain?.oc || Object.keys(chain.oc).length === 0) {
-    showChainError("No option data available.");
-    return;
+// ═══════════════════════════════════
+// SPOT DISPLAY
+// ═══════════════════════════════════
+function updSpot(){
+  const sp=spots[idx];if(!sp)return;
+  document.getElementById("sp").textContent="₹"+sp.toLocaleString("en-IN",{minimumFractionDigits:2,maximumFractionDigits:2});
+  if(prevSpot){
+    const chg=((sp-prevSpot)/prevSpot*100).toFixed(2);
+    const el=document.getElementById("sc");
+    el.textContent=(chg>=0?"+":"")+chg+"%";
+    el.style.color=chg>=0?"var(--green)":"var(--red)";
   }
+}
 
-  const spot = spots[idx] || 0;
-  const strikes = Object.keys(chain.oc).map(Number).sort((a, b) => a - b);
-  if (!strikes.length) { showChainError("No strikes found."); return; }
-
-  const atm = strikes.reduce((p, c) => Math.abs(c - spot) < Math.abs(p - spot) ? c : p, strikes[0]);
-
-  // PCR
-  let tCE = 0, tPE = 0;
-  strikes.forEach(s => {
-    const k = Object.keys(chain.oc).find(x => parseFloat(x) === s) || String(s);
-    tCE += chain.oc[k]?.ce?.oi || 0;
-    tPE += chain.oc[k]?.pe?.oi || 0;
+// ═══════════════════════════════════
+// RENDER CHAIN
+// ═══════════════════════════════════
+function renderChain(){
+  if(!chain?.oc||Object.keys(chain.oc).length===0)return;
+  const spot=spots[idx]||0;
+  const strikes=Object.keys(chain.oc).map(Number).sort((a,b)=>a-b);
+  const atm=strikes.reduce((p,c)=>Math.abs(c-spot)<Math.abs(p-spot)?c:p,strikes[0]);
+  let tCE=0,tPE=0;
+  strikes.forEach(s=>{const k=Object.keys(chain.oc).find(x=>parseFloat(x)===s)||String(s);tCE+=chain.oc[k]?.ce?.oi||0;tPE+=chain.oc[k]?.pe?.oi||0;});
+  const pcr=tCE>0?(tPE/tCE).toFixed(2):"—";
+  let minPain=Infinity,maxPain=atm;
+  strikes.forEach(expS=>{
+    const pain=strikes.reduce((sum,s)=>{const k=Object.keys(chain.oc).find(x=>parseFloat(x)===s)||String(s);return sum+Math.max(0,expS-s)*(chain.oc[k]?.ce?.oi||0)+Math.max(0,s-expS)*(chain.oc[k]?.pe?.oi||0);},0);
+    if(pain<minPain){minPain=pain;maxPain=expS;}
   });
-  const pcr = tCE > 0 ? (tPE / tCE).toFixed(2) : "—";
-
-  // Max Pain
-  let minPain = Infinity, maxPain = atm;
-  strikes.forEach(expS => {
-    const pain = strikes.reduce((sum, s) => {
-      const k = Object.keys(chain.oc).find(x => parseFloat(x) === s) || String(s);
-      return sum + Math.max(0, expS - s) * (chain.oc[k]?.ce?.oi || 0) + Math.max(0, s - expS) * (chain.oc[k]?.pe?.oi || 0);
-    }, 0);
-    if (pain < minPain) { minPain = pain; maxPain = expS; }
-  });
-
-  document.getElementById("pcr").textContent = pcr;
-  document.getElementById("pcr").style.color = parseFloat(pcr) >= 1 ? "var(--green)" : "var(--red)";
-  document.getElementById("atm-v").textContent = atm;
-  document.getElementById("mp-v").textContent = maxPain;
-
-  // Max OI for bar scaling
-  const maxCeOI = Math.max(...strikes.map(s => { const k = Object.keys(chain.oc).find(x => parseFloat(x) === s) || String(s); return chain.oc[k]?.ce?.oi || 0; }));
-  const maxPeOI = Math.max(...strikes.map(s => { const k = Object.keys(chain.oc).find(x => parseFloat(x) === s) || String(s); return chain.oc[k]?.pe?.oi || 0; }));
-
-  let rows = "";
-  strikes.forEach(strike => {
-    const k = Object.keys(chain.oc).find(x => parseFloat(x) === strike) || String(strike);
-    const e = chain.oc[k]; if (!e) return;
-    const ce = e.ce || {}, pe = e.pe || {};
-    const isAtm = strike === atm;
-    const ks = JSON.stringify(k);
-    const ceOIChg = (ce.oi && ce.previous_oi) ? ce.oi - ce.previous_oi : null;
-    const peOIChg = (pe.oi && pe.previous_oi) ? pe.oi - pe.previous_oi : null;
-    const ceBar = maxCeOI ? Math.round((ce.oi || 0) / maxCeOI * 40) : 0;
-    const peBar = maxPeOI ? Math.round((pe.oi || 0) / maxPeOI * 40) : 0;
-
-    rows += `<tr class="crow ${isAtm ? "atm" : ""}">
-      <td class="r">
-        <div class="oiv">${fL(ce.oi)}</div>
-        <div class="oi-bar-bg"><div class="oi-bar-fill" style="width:${ceBar}px;background:rgba(239,68,68,.5)"></div></div>
-      </td>
-      <td class="r ivv">${ce.implied_volatility != null ? Number(ce.implied_volatility).toFixed(1) : "—"}</td>
-      <td class="r dv">${ce.greeks?.delta != null ? Number(ce.greeks.delta).toFixed(2) : "—"}</td>
-      <td class="r ltpv" style="color:${isAtm?"var(--amber)":"var(--text)"}">${ce.last_price != null ? "₹" + f2(ce.last_price) : "—"}</td>
-      <td class="r"><div class="bs-wrap"><button class="bb" onclick="openOrd(${ks},'CE','BUY')">B</button><button class="sb" onclick="openOrd(${ks},'CE','SELL')">S</button></div></td>
-      <td class="stk">${strike}${isAtm ? `<span class="atm-l">ATM</span>` : ""}</td>
-      <td><div class="bs-wrap-l"><button class="bb" onclick="openOrd(${ks},'PE','BUY')">B</button><button class="sb" onclick="openOrd(${ks},'PE','SELL')">S</button></div></td>
-      <td class="ltpv" style="color:${isAtm?"var(--amber)":"var(--text)"}">${pe.last_price != null ? "₹" + f2(pe.last_price) : "—"}</td>
-      <td class="dv">${pe.greeks?.delta != null ? Number(pe.greeks.delta).toFixed(2) : "—"}</td>
-      <td class="ivv">${pe.implied_volatility != null ? Number(pe.implied_volatility).toFixed(1) : "—"}</td>
-      <td>
-        <div class="oiv">${fL(pe.oi)}</div>
-        <div class="oi-bar-bg"><div class="oi-bar-fill" style="width:${peBar}px;background:rgba(34,197,94,.5)"></div></div>
-      </td>
+  document.getElementById("pcr").textContent=pcr;
+  document.getElementById("pcr").style.color=parseFloat(pcr)>=1?"var(--green)":"var(--red)";
+  document.getElementById("atm-v").textContent=atm;
+  document.getElementById("mp-v").textContent=maxPain;
+  const maxCO=Math.max(...strikes.map(s=>{const k=Object.keys(chain.oc).find(x=>parseFloat(x)===s)||String(s);return chain.oc[k]?.ce?.oi||0;}));
+  const maxPO=Math.max(...strikes.map(s=>{const k=Object.keys(chain.oc).find(x=>parseFloat(x)===s)||String(s);return chain.oc[k]?.pe?.oi||0;}));
+  let rows="";
+  strikes.forEach(strike=>{
+    const k=Object.keys(chain.oc).find(x=>parseFloat(x)===strike)||String(strike);
+    const e=chain.oc[k];if(!e)return;
+    const ce=e.ce||{},pe=e.pe||{};
+    const isAtm=strike===atm;
+    const ks=JSON.stringify(k);
+    const ceBar=maxCO?Math.round((ce.oi||0)/maxCO*36):0;
+    const peBar=maxPO?Math.round((pe.oi||0)/maxPO*36):0;
+    rows+=`<tr class="crow ${isAtm?"atm":""}">
+      <td class="r"><div class="oiv">${fL(ce.oi)}</div><div style="width:${ceBar}px;height:2px;background:rgba(239,68,68,.45);border-radius:1px;float:right;margin-top:2px"></div></td>
+      <td class="r ivv">${ce.implied_volatility!=null?Number(ce.implied_volatility).toFixed(1):"—"}</td>
+      <td class="r dv">${ce.greeks?.delta!=null?Number(ce.greeks.delta).toFixed(2):"—"}</td>
+      <td class="r ltpv" style="color:${isAtm?"var(--amber)":"var(--text)"}">${ce.last_price!=null?"₹"+f2(ce.last_price):"—"}</td>
+      <td class="r"><div class="bs-r"><button class="bb" onclick="openOrd(${ks},'CE','BUY')">B</button><button class="sb" onclick="openOrd(${ks},'CE','SELL')">S</button></div></td>
+      <td class="stk">${strike}${isAtm?`<span class="atm-l">ATM</span>`:""}</td>
+      <td><div class="bs-l"><button class="bb" onclick="openOrd(${ks},'PE','BUY')">B</button><button class="sb" onclick="openOrd(${ks},'PE','SELL')">S</button></div></td>
+      <td class="ltpv" style="color:${isAtm?"var(--amber)":"var(--text)"}">${pe.last_price!=null?"₹"+f2(pe.last_price):"—"}</td>
+      <td class="dv">${pe.greeks?.delta!=null?Number(pe.greeks.delta).toFixed(2):"—"}</td>
+      <td class="ivv">${pe.implied_volatility!=null?Number(pe.implied_volatility).toFixed(1):"—"}</td>
+      <td><div class="oiv">${fL(pe.oi)}</div><div style="width:${peBar}px;height:2px;background:rgba(34,197,94,.45);border-radius:1px;margin-top:2px"></div></td>
     </tr>`;
   });
-
-  document.getElementById("chain-scroll").innerHTML = `
+  document.getElementById("chain-scroll").innerHTML=`
     <table class="ct">
       <thead>
-        <tr>
-          <th colspan="5" class="ce-h" style="text-align:center">CALLS</th>
-          <th style="background:rgba(59,130,246,.06);text-align:center">STRIKE</th>
-          <th colspan="5" class="pe-h" style="text-align:center">PUTS</th>
-        </tr>
-        <tr>
-          <th class="r">OI</th><th class="r">IV%</th><th class="r">Δ</th><th class="r">LTP</th><th class="r">B/S</th>
-          <th style="text-align:center">—</th>
-          <th>B/S</th><th>LTP</th><th>Δ</th><th>IV%</th><th>OI</th>
-        </tr>
+        <tr><th colspan="5" class="ceh" style="text-align:center">CALLS</th><th style="background:rgba(59,130,246,.06);text-align:center">STRIKE</th><th colspan="5" class="peh" style="text-align:center">PUTS</th></tr>
+        <tr><th class="r">OI</th><th class="r">IV%</th><th class="r">Δ</th><th class="r">LTP</th><th class="r">B/S</th><th style="text-align:center">—</th><th>B/S</th><th>LTP</th><th>Δ</th><th>IV%</th><th>OI</th></tr>
       </thead>
       <tbody>${rows}</tbody>
     </table>`;
-
-  // Scroll to ATM
-  setTimeout(() => {
-    const atmRow = document.querySelector(".crow.atm");
-    if (atmRow) atmRow.scrollIntoView({ block:"center", behavior:"smooth" });
-  }, 200);
+  setTimeout(()=>{const a=document.querySelector(".crow.atm");if(a)a.scrollIntoView({block:"center",behavior:"smooth"});},200);
 }
 
-// ═══════════════════════════════════════════
-// OI CANVAS CHART
-// ═══════════════════════════════════════════
-function setOiMode(m, btn) {
-  oiMode = m;
-  document.querySelectorAll(".omb").forEach(b => b.classList.remove("on"));
-  btn.classList.add("on");
-  renderOi();
-}
-
-function renderOi() {
-  const wrap = document.getElementById("oi-wrap");
-  const canvas = document.getElementById("oi-canvas");
-  if (!chain?.oc) return;
-  const dpr = window.devicePixelRatio || 1;
-  const W = wrap.clientWidth, H = wrap.clientHeight;
-  if (!W || !H) return;
-  canvas.width = W * dpr; canvas.height = H * dpr;
-  canvas.style.width = W + "px"; canvas.style.height = H + "px";
-  const ctx = canvas.getContext("2d"); ctx.scale(dpr, dpr);
-  ctx.fillStyle = "#070B12"; ctx.fillRect(0, 0, W, H);
-
-  const spot = spots[idx] || 0;
-  const strikes = Object.keys(chain.oc).map(Number).sort((a, b) => a - b);
-  if (!strikes.length) return;
-  const atm = strikes.reduce((p, c) => Math.abs(c - spot) < Math.abs(p - spot) ? c : p, strikes[0]);
-  const nearby = strikes.filter(s => Math.abs(s - atm) <= 600).slice(0, 14);
-  if (!nearby.length) return;
-
-  const padL = 38, padR = 6, padT = 12, padB = 22;
-  const bw = (W - padL - padR) / nearby.length;
-  let maxV = 0;
-  const vals = nearby.map(s => {
-    const k = Object.keys(chain.oc).find(x => parseFloat(x) === s) || String(s);
-    const ce = chain.oc[k]?.ce, pe = chain.oc[k]?.pe;
-    if (oiMode === "oi") { const v = Math.max(ce?.oi||0, pe?.oi||0); if (v > maxV) maxV = v; return { ce: ce?.oi||0, pe: pe?.oi||0 }; }
-    if (oiMode === "iv") { const v = Math.max(ce?.implied_volatility||0, pe?.implied_volatility||0); if (v > maxV) maxV = v; return { ce: ce?.implied_volatility||0, pe: pe?.implied_volatility||0 }; }
-    const r = (pe?.oi||0) / Math.max(1, ce?.oi||1); if (r > maxV) maxV = r; return { r };
-  });
-  if (!maxV) return;
-
-  const sy = v => padT + (H - padT - padB) * (1 - v / maxV);
-  ctx.font = "8px system-ui";
-
-  nearby.forEach((s, i) => {
-    const cx = padL + i * bw + bw / 2, d = vals[i];
-    if (oiMode === "pcr") {
-      ctx.fillStyle = d.r >= 1 ? "rgba(34,197,94,.7)" : "rgba(239,68,68,.7)";
-      ctx.fillRect(cx - bw * .38, sy(d.r), bw * .76, H - padB - sy(d.r));
-    } else {
-      ctx.fillStyle = "rgba(239,68,68,.7)"; ctx.fillRect(cx - bw * .4, sy(d.ce), bw * .37, H - padB - sy(d.ce));
-      ctx.fillStyle = "rgba(34,197,94,.7)"; ctx.fillRect(cx + bw * .03, sy(d.pe), bw * .37, H - padB - sy(d.pe));
-    }
-    if (s === atm) {
-      ctx.strokeStyle = "rgba(245,158,11,.5)"; ctx.setLineDash([2, 3]);
-      ctx.beginPath(); ctx.moveTo(cx, padT); ctx.lineTo(cx, H - padB); ctx.stroke(); ctx.setLineDash([]);
-    }
-    if (i % Math.max(1, Math.floor(nearby.length / 7)) === 0) {
-      ctx.fillStyle = "rgba(74,96,128,.7)"; ctx.textAlign = "center";
-      ctx.fillText(s, cx, H - 4);
-    }
-  });
-
-  ctx.fillStyle = "rgba(74,96,128,.7)"; ctx.textAlign = "right";
-  [.5, 1].forEach(p => { const y = sy(maxV * p); ctx.fillText(fL(maxV * p), padL - 2, y + 3); });
-
-  if (oiMode === "oi") {
-    const totalCE = vals.reduce((s, v) => s + (v.ce || 0), 0);
-    const totalPE = vals.reduce((s, v) => s + (v.pe || 0), 0);
-    const pcr = totalCE > 0 ? (totalPE / totalCE).toFixed(2) : "—";
-    ctx.fillStyle = parseFloat(pcr) >= 1 ? "rgba(34,197,94,.8)" : "rgba(239,68,68,.8)";
-    ctx.textAlign = "right";
-    ctx.fillText("PCR: " + pcr, W - padR, padT + 2);
-  }
-}
-
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 // ORDER MODAL
-// ═══════════════════════════════════════════
-function openOrd(sk, type, action) {
-  if (!chain?.oc) return;
-  const e = chain.oc[sk]; const sd = type === "CE" ? e?.ce : e?.pe;
-  pendingOrder = { sk, type, action, sd };
-  document.getElementById("m-main").innerHTML = `<span style="color:${action==="BUY"?"var(--green)":"var(--red)"}">${action}</span> ${idx} ${parseFloat(sk).toFixed(0)} ${type}`;
-  document.getElementById("m-sub").textContent = `${expiry} · ${INSTS[idx].label}`;
-  document.getElementById("m-lots").value = 1;
-  document.getElementById("m-ot").value = "MARKET";
-  document.getElementById("m-lw").style.display = "none";
-  document.getElementById("m-cfm").textContent = action;
-  document.getElementById("m-cfm").style.background = action === "BUY" ? "var(--blue)" : "var(--red)";
+// ═══════════════════════════════════
+function openOrd(sk,type,action){
+  if(!chain?.oc)return;
+  const e=chain.oc[sk];const sd=type==="CE"?e?.ce:e?.pe;
+  pendingOrder={sk,type,action,sd};
+  document.getElementById("m-main").innerHTML=`<span style="color:${action==="BUY"?"var(--green)":"var(--red)"}">${action}</span> ${idx} ${parseFloat(sk).toFixed(0)} ${type}`;
+  document.getElementById("m-sub").textContent=`${expiry} · ${TV[idx].label}`;
+  document.getElementById("m-lots").value=1;
+  document.getElementById("m-ot").value="MARKET";
+  document.getElementById("m-lw").style.display="none";
+  document.getElementById("m-cfm").textContent=action;
+  document.getElementById("m-cfm").style.background=action==="BUY"?"var(--blue)":"var(--red)";
   updMo();
   document.getElementById("om").classList.add("on");
 }
 
-function updMo() {
-  const lots = parseInt(document.getElementById("m-lots").value) || 1;
-  const ot = document.getElementById("m-ot").value;
-  document.getElementById("m-lw").style.display = ot === "LIMIT" ? "block" : "none";
-  const lot = INSTS[idx].lot;
-  document.getElementById("m-qty").textContent = `= ${lots * lot} qty`;
-  const sd = pendingOrder?.sd || {};
-  const action = pendingOrder?.action;
-  const fp = ot === "LIMIT"
-    ? (parseFloat(document.getElementById("m-lp")?.value) || 0)
-    : (action === "BUY" ? sd.top_ask_price : sd.top_bid_price) || 0;
-  const marg = fp * lots * lot;
-  document.getElementById("m-data").innerHTML = [
-    ["LTP", sd.last_price != null ? "₹" + f2(sd.last_price) : "—"],
-    ["Ask", sd.top_ask_price != null ? "₹" + f2(sd.top_ask_price) : "—"],
-    ["Bid", sd.top_bid_price != null ? "₹" + f2(sd.top_bid_price) : "—"],
-    ["IV", sd.implied_volatility != null ? Number(sd.implied_volatility).toFixed(1) + "%" : "—"],
-    ["Delta", sd.greeks?.delta != null ? Number(sd.greeks.delta).toFixed(3) : "—"],
-    ["OI", fL(sd.oi)],
-  ].map(([l, v]) => `<div><div class="dgl">${l}</div><div class="dgv">${v}</div></div>`).join("");
-  document.getElementById("m-marg").innerHTML = `Margin: <b>${fI(marg)}</b> &nbsp;·&nbsp; Available: <span class="${cash >= marg ? "ok2" : "ec"}">${fI(cash)}</span>`;
+function updMo(){
+  const lots=parseInt(document.getElementById("m-lots").value)||1;
+  const ot=document.getElementById("m-ot").value;
+  document.getElementById("m-lw").style.display=ot==="LIMIT"?"block":"none";
+  const lot=TV[idx].lot;
+  document.getElementById("m-qty").textContent=`= ${lots*lot} qty`;
+  const sd=pendingOrder?.sd||{};
+  const action=pendingOrder?.action;
+  const fp=ot==="LIMIT"?(parseFloat(document.getElementById("m-lp")?.value)||0):(action==="BUY"?sd.top_ask_price:sd.top_bid_price)||0;
+  const marg=fp*lots*lot;
+  document.getElementById("m-data").innerHTML=[
+    ["LTP",sd.last_price!=null?"₹"+f2(sd.last_price):"—"],
+    ["Ask",sd.top_ask_price!=null?"₹"+f2(sd.top_ask_price):"—"],
+    ["Bid",sd.top_bid_price!=null?"₹"+f2(sd.top_bid_price):"—"],
+    ["IV",sd.implied_volatility!=null?Number(sd.implied_volatility).toFixed(1)+"%":"—"],
+    ["Delta",sd.greeks?.delta!=null?Number(sd.greeks.delta).toFixed(3):"—"],
+    ["OI",fL(sd.oi)],
+  ].map(([l,v])=>`<div><div class="dgl">${l}</div><div class="dgv">${v}</div></div>`).join("");
+  document.getElementById("m-marg").innerHTML=`Margin: <b>${fI(marg)}</b> &nbsp;·&nbsp; Available: <span class="${cash>=marg?"ok2":"ec"}">${fI(cash)}</span>`;
 }
 
-function closeMo(e) {
-  if (e && e.target !== document.getElementById("om")) return;
-  document.getElementById("om").classList.remove("on");
-  pendingOrder = null;
-}
+function closeMo(e){if(e&&e.target!==document.getElementById("om"))return;document.getElementById("om").classList.remove("on");pendingOrder=null;}
 
-function confOrd() {
-  if (!pendingOrder) return;
-  const { sk, type, action, sd } = pendingOrder;
-  const lots = parseInt(document.getElementById("m-lots").value) || 1;
-  const ot = document.getElementById("m-ot").value;
-  const fp = ot === "LIMIT"
-    ? parseFloat(document.getElementById("m-lp").value) || 0
-    : (action === "BUY" ? sd?.top_ask_price : sd?.top_bid_price) || 0;
-  if (!fp || fp <= 0) { toast("Invalid price", "err"); return; }
-  const lot = INSTS[idx].lot, qty = lots * lot, marg = fp * qty;
-  if (action === "BUY" && cash < marg) { toast("Insufficient margin!", "err"); return; }
-  const key = `${idx}|${sk}|${type}|${expiry}`;
-  orders.unshift({ id:Date.now(), instrument:idx, strike:sk, type, expiry, action, lots, qty, price:fp, status:"EXECUTED", time:new Date().toLocaleTimeString("en-IN") });
-  const ex = positions.find(p => p.key === key);
-  if (ex) {
-    const nq = action === "BUY" ? ex.qty + qty : ex.qty - qty;
-    if (nq <= 0) positions = positions.filter(p => p.key !== key);
-    else { ex.avgPrice = action === "BUY" ? (ex.avgPrice * ex.qty + fp * qty) / (ex.qty + qty) : ex.avgPrice; ex.qty = nq; ex.lots = nq / lot; }
-  } else {
-    positions.push({ key, instrument:idx, strike:sk, type, expiry, qty, lots, avgPrice:fp });
-  }
-  cash += action === "BUY" ? -marg : marg;
-  document.getElementById("om").classList.remove("on");
-  pendingOrder = null;
+function confOrd(){
+  if(!pendingOrder)return;
+  const{sk,type,action,sd}=pendingOrder;
+  const lots=parseInt(document.getElementById("m-lots").value)||1;
+  const ot=document.getElementById("m-ot").value;
+  const fp=ot==="LIMIT"?parseFloat(document.getElementById("m-lp").value)||0:(action==="BUY"?sd?.top_ask_price:sd?.top_bid_price)||0;
+  if(!fp||fp<=0){toast("Invalid price","err");return;}
+  const lot=TV[idx].lot,qty=lots*lot,marg=fp*qty;
+  if(action==="BUY"&&cash<marg){toast("Insufficient margin!","err");return;}
+  const key=`${idx}|${sk}|${type}|${expiry}`;
+  orders.unshift({id:Date.now(),instrument:idx,strike:sk,type,expiry,action,lots,qty,price:fp,status:"EXECUTED",time:new Date().toLocaleTimeString("en-IN")});
+  const ex=positions.find(p=>p.key===key);
+  if(ex){
+    const nq=action==="BUY"?ex.qty+qty:ex.qty-qty;
+    if(nq<=0)positions=positions.filter(p=>p.key!==key);
+    else{ex.avgPrice=action==="BUY"?(ex.avgPrice*ex.qty+fp*qty)/(ex.qty+qty):ex.avgPrice;ex.qty=nq;ex.lots=nq/lot;}
+  }else positions.push({key,instrument:idx,strike:sk,type,expiry,qty,lots,avgPrice:fp});
+  cash+=action==="BUY"?-marg:marg;
+  document.getElementById("om").classList.remove("on");pendingOrder=null;
   toast(`${action} ${lots}L ${idx} ${parseFloat(sk).toFixed(0)} ${type} @ ₹${f2(fp)}`);
   updAll();
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 // CLOSE POSITION
-// ═══════════════════════════════════════════
-function closePos(key) {
-  const pos = positions.find(p => p.key === key);
-  if (!pos || !chain?.oc) return;
-  const sk = Object.keys(chain.oc).find(x => parseFloat(x) === parseFloat(pos.strike)) || pos.strike;
-  const sd = pos.type === "CE" ? chain.oc[sk]?.ce : chain.oc[sk]?.pe;
-  const ep = sd?.top_bid_price || pos.avgPrice;
-  const pnl = (ep - pos.avgPrice) * pos.qty;
-  cash += ep * pos.qty;
-  orders.unshift({ id:Date.now(), instrument:pos.instrument, strike:pos.strike, type:pos.type, expiry:pos.expiry, action:"SELL", lots:pos.lots, qty:pos.qty, price:ep, status:"EXECUTED", time:new Date().toLocaleTimeString("en-IN") });
-  positions = positions.filter(p => p.key !== key);
-  toast(`Closed @ ₹${f2(ep)} | PnL: ${pnl >= 0 ? "+" : ""}₹${Math.abs(pnl).toFixed(0)}`, pnl >= 0 ? "ok" : "err");
+// ═══════════════════════════════════
+function closePos(key){
+  const pos=positions.find(p=>p.key===key);if(!pos||!chain?.oc)return;
+  const sk=Object.keys(chain.oc).find(x=>parseFloat(x)===parseFloat(pos.strike))||pos.strike;
+  const sd=pos.type==="CE"?chain.oc[sk]?.ce:chain.oc[sk]?.pe;
+  const ep=sd?.top_bid_price||pos.avgPrice;
+  const pnl=(ep-pos.avgPrice)*pos.qty;
+  cash+=ep*pos.qty;
+  orders.unshift({id:Date.now(),instrument:pos.instrument,strike:pos.strike,type:pos.type,expiry:pos.expiry,action:"SELL",lots:pos.lots,qty:pos.qty,price:ep,status:"EXECUTED",time:new Date().toLocaleTimeString("en-IN")});
+  positions=positions.filter(p=>p.key!==key);
+  toast(`Closed @ ₹${f2(ep)} | PnL: ${pnl>=0?"+":""}₹${Math.abs(pnl).toFixed(0)}`,pnl>=0?"ok":"err");
   updAll();
 }
 
-function getLtp(pos) {
-  if (!chain?.oc) return pos.avgPrice;
-  const sk = Object.keys(chain.oc).find(x => parseFloat(x) === parseFloat(pos.strike));
-  if (!sk) return pos.avgPrice;
-  const sd = pos.type === "CE" ? chain.oc[sk]?.ce : chain.oc[sk]?.pe;
-  return sd?.last_price || pos.avgPrice;
+function getLtp(pos){
+  if(!chain?.oc)return pos.avgPrice;
+  const sk=Object.keys(chain.oc).find(x=>parseFloat(x)===parseFloat(pos.strike));if(!sk)return pos.avgPrice;
+  const sd=pos.type==="CE"?chain.oc[sk]?.ce:chain.oc[sk]?.pe;return sd?.last_price||pos.avgPrice;
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 // UPDATE ALL
-// ═══════════════════════════════════════════
-function updAll() { updTop(); renderPos(); renderOrd(); renderAn(); renderPayoff(); }
+// ═══════════════════════════════════
+function updAll(){updTop();renderPos();renderOrd();renderAn();renderPayoff();}
 
-function updTop() {
-  const tp = positions.reduce((s, p) => s + (getLtp(p) - p.avgPrice) * p.qty, 0);
-  document.getElementById("tm").textContent = fI(cash);
-  const el = document.getElementById("tp");
-  el.textContent = fSign(tp);
-  el.style.color = tp >= 0 ? "var(--green)" : "var(--red)";
-  const pb = document.getElementById("pb");
-  pb.textContent = positions.length;
-  pb.style.display = positions.length ? "inline" : "none";
+function updTop(){
+  const tp=positions.reduce((s,p)=>s+(getLtp(p)-p.avgPrice)*p.qty,0);
+  document.getElementById("tm").textContent=fI(cash);
+  document.getElementById("cur-cap").textContent=fI(capital);
+  const el=document.getElementById("tp");
+  el.textContent=(tp>=0?"+":"")+fI(Math.abs(tp));
+  el.style.color=tp>=0?"var(--green)":"var(--red)";
+  const pb=document.getElementById("pb");
+  pb.textContent=positions.length;
+  pb.style.display=positions.length?"inline":"none";
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
 // RENDER POSITIONS
-// ═══════════════════════════════════════════
-function renderPos() {
-  const el = document.getElementById("pos-content");
-  if (!positions.length) { el.innerHTML = `<div class="empty"><div class="ei">📭</div><div class="et">No open positions</div></div>`; return; }
-  el.innerHTML = positions.map(pos => {
-    const ltp = getLtp(pos), pnl = (ltp - pos.avgPrice) * pos.qty, pct = ((ltp - pos.avgPrice) / pos.avgPrice * 100).toFixed(2);
-    const bar = Math.min(100, Math.abs(pnl) / (Math.abs(pos.avgPrice * pos.qty) / 5) * 100);
-    return `<div class="pos-card">
-      <div class="pc-top">
-        <div>
-          <div class="pc-name">${pos.instrument} <span class="chip ${pos.type==="CE"?"cce":"cpe"}">${pos.type}</span></div>
-          <div class="pc-det">${parseFloat(pos.strike).toFixed(0)} · ${pos.expiry} · ${pos.lots} lot${pos.lots > 1 ? "s" : ""}</div>
-        </div>
-        <div style="text-align:right">
-          <div class="pnl-v ${pnl >= 0 ? "pos" : "neg"}">${pnl >= 0 ? "+" : ""}₹${Math.abs(pnl).toFixed(0)}</div>
-          <div class="pnl-p ${pnl >= 0 ? "pos" : "neg"}">${pct >= 0 ? "+" : ""}${pct}%</div>
-        </div>
-      </div>
-      <div class="pbar-w"><div class="pbar" style="width:${bar}%;background:${pnl >= 0 ? "var(--green)" : "var(--red)"}"></div></div>
-      <div class="pc-bot">
-        <div class="pc-pr">Avg <span>₹${f2(pos.avgPrice)}</span> · LTP <span>₹${f2(ltp)}</span></div>
-        <button class="clb" onclick="closePos('${pos.key}')">CLOSE</button>
-      </div>
-    </div>`;
-  }).join("");
-}
-
-// ═══════════════════════════════════════════
-// RENDER ORDERS
-// ═══════════════════════════════════════════
-function renderOrd() {
-  const el = document.getElementById("ord-content");
-  if (!orders.length) { el.innerHTML = `<div class="empty"><div class="ei">📋</div><div class="et">No orders yet</div></div>`; return; }
-  el.innerHTML = orders.map(o => `
-    <div class="ord-item">
-      <div>
-        <div class="o-main"><span class="chip ${o.action==="BUY"?"cbuy":"csell"}">${o.action}</span> ${o.instrument} ${parseFloat(o.strike).toFixed(0)} <span class="chip ${o.type==="CE"?"cce":"cpe"}">${o.type}</span></div>
-        <div class="o-sub">${o.expiry} · ${o.lots}L · ${o.time}</div>
-      </div>
-      <div style="text-align:right">
-        <div class="o-price">₹${f2(o.price)}</div>
-        <div class="o-time"><span class="exec-b">${o.status}</span></div>
-      </div>
-    </div>`).join("");
-}
-
-// ═══════════════════════════════════════════
-// RENDER ANALYTICS
-// ═══════════════════════════════════════════
-function renderAn() {
-  const tp = positions.reduce((s, p) => s + (getLtp(p) - p.avgPrice) * p.qty, 0);
-  const pv = cash + positions.reduce((s, p) => s + getLtp(p) * p.qty, 0);
-  const ret = ((pv - CASH0) / CASH0 * 100).toFixed(2);
-  document.getElementById("an-grid").innerHTML = [
-    ["Capital", fI(CASH0), "var(--muted)"],
-    ["Margin", fI(cash), "var(--blue)"],
-    ["P&L", fSign(tp), tp >= 0 ? "var(--green)" : "var(--red)"],
-    ["Portfolio", fI(pv), "var(--text)"],
-    ["Return", `${ret >= 0 ? "+" : ""}${ret}%`, parseFloat(ret) >= 0 ? "var(--green)" : "var(--red)"],
-    ["Positions", positions.length, "var(--purple)"],
-    ["Orders", orders.length, "var(--muted)"],
-    ["Deployed", fI(CASH0 - cash), "var(--muted)"],
-  ].map(([l, v, c]) => `<div class="ac"><div class="acl">${l}</div><div class="acv" style="color:${c}">${v}</div></div>`).join("");
-
-  const pl = document.getElementById("an-pos");
-  if (!positions.length) { document.getElementById("payoff-wrap").style.display = "none"; pl.innerHTML = ""; return; }
-  document.getElementById("payoff-wrap").style.display = "block";
-  pl.innerHTML = `<div class="sec-t" style="margin-top:4px">Open Positions</div>` + positions.map(pos => {
-    const ltp = getLtp(pos), pnl = (ltp - pos.avgPrice) * pos.qty, pct = ((ltp - pos.avgPrice) / pos.avgPrice * 100).toFixed(2);
+// ═══════════════════════════════════
+function renderPos(){
+  const el=document.getElementById("pos-content");
+  if(!positions.length){el.innerHTML=`<div class="empty"><div class="ei">📭</div><div class="et">No open positions</div></div>`;return;}
+  el.innerHTML=positions.map(pos=>{
+    const ltp=getLtp(pos),pnl=(ltp-pos.avgPrice)*pos.qty,pct=((ltp-pos.avgPrice)/pos.avgPrice*100).toFixed(2);
+    const bar=Math.min(100,Math.abs(pnl)/(Math.abs(pos.avgPrice*pos.qty)/5)*100);
     return `<div class="pos-card">
       <div class="pc-top">
         <div><div class="pc-name">${pos.instrument} <span class="chip ${pos.type==="CE"?"cce":"cpe"}">${pos.type}</span></div>
-        <div class="pc-det">${parseFloat(pos.strike).toFixed(0)} · ${pos.expiry}</div></div>
-        <div style="text-align:right">
-          <div class="pnl-v ${pnl >= 0 ? "pos" : "neg"}">${pnl >= 0 ? "+" : ""}₹${Math.abs(pnl).toFixed(0)}</div>
-          <div class="pnl-p ${pnl >= 0 ? "pos" : "neg"}">${pct >= 0 ? "+" : ""}${pct}%</div>
-        </div>
+        <div class="pc-det">${parseFloat(pos.strike).toFixed(0)} · ${pos.expiry} · ${pos.lots}L</div></div>
+        <div style="text-align:right"><div class="pnl-v ${pnl>=0?"pos":"neg"}">${pnl>=0?"+":""}₹${Math.abs(pnl).toFixed(0)}</div>
+        <div class="pnl-p ${pnl>=0?"pos":"neg"}">${pct>=0?"+":""}${pct}%</div></div>
       </div>
+      <div class="pbar-w"><div class="pbar" style="width:${bar}%;background:${pnl>=0?"var(--green)":"var(--red)"}"></div></div>
+      <div class="pc-bot"><div class="pc-pr">Avg <span>₹${f2(pos.avgPrice)}</span> · LTP <span>₹${f2(ltp)}</span></div>
+      <button class="clb" onclick="closePos('${pos.key}')">CLOSE</button></div>
     </div>`;
   }).join("");
 }
 
-// ═══════════════════════════════════════════
-// PAYOFF DIAGRAM
-// ═══════════════════════════════════════════
-function renderPayoff() {
-  const canvas = document.getElementById("pf-canvas");
-  const wrap = document.getElementById("pf-canvas-wrap");
-  if (!positions.length || !spots[idx]) return;
-  const dpr = window.devicePixelRatio || 1;
-  const W = wrap.clientWidth, H = wrap.clientHeight;
-  canvas.width = W * dpr; canvas.height = H * dpr;
-  canvas.style.width = W + "px"; canvas.style.height = H + "px";
-  const ctx = canvas.getContext("2d"); ctx.scale(dpr, dpr);
-  ctx.fillStyle = "#070B12"; ctx.fillRect(0, 0, W, H);
-  const spot = spots[idx], range = spot * .05;
-  const prices = Array.from({ length: 51 }, (_, i) => spot - range + i * range * 2 / 50);
-  const pnls = prices.map(price => positions.reduce((s, pos) => {
-    const str = parseFloat(pos.strike);
-    return s + ((pos.type === "CE" ? Math.max(0, price - str) : Math.max(0, str - price)) - pos.avgPrice) * pos.qty;
-  }, 0));
-  const minP = Math.min(...pnls), maxP = Math.max(...pnls), rng = Math.max(1, maxP - minP);
-  const padL = 54, padR = 8, padT = 8, padB = 20;
-  const sx = x => padL + (x - prices[0]) / (prices[prices.length - 1] - prices[0]) * (W - padL - padR);
-  const sy = y => padT + (maxP - y) / rng * (H - padT - padB);
-  ctx.strokeStyle = "rgba(74,96,128,.3)"; ctx.setLineDash([2, 3]); ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(padL, sy(0)); ctx.lineTo(W - padR, sy(0)); ctx.stroke();
-  ctx.strokeStyle = "rgba(245,158,11,.4)";
-  ctx.beginPath(); ctx.moveTo(sx(spot), padT); ctx.lineTo(sx(spot), H - padB); ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.beginPath(); ctx.moveTo(sx(prices[0]), sy(pnls[0]));
-  prices.forEach((p, i) => ctx.lineTo(sx(p), sy(pnls[i])));
-  ctx.lineTo(sx(prices[prices.length - 1]), sy(0)); ctx.lineTo(sx(prices[0]), sy(0)); ctx.closePath();
-  const g = ctx.createLinearGradient(0, padT, 0, H - padB);
-  g.addColorStop(0, "rgba(34,197,94,.2)"); g.addColorStop(1, "rgba(239,68,68,.2)");
-  ctx.fillStyle = g; ctx.fill();
-  ctx.strokeStyle = "#3B82F6"; ctx.lineWidth = 1.5;
-  ctx.beginPath(); ctx.moveTo(sx(prices[0]), sy(pnls[0]));
-  prices.forEach((p, i) => ctx.lineTo(sx(p), sy(pnls[i]))); ctx.stroke(); ctx.lineWidth = 1;
-  ctx.fillStyle = "rgba(74,96,128,.8)"; ctx.font = "8px system-ui"; ctx.textAlign = "right";
-  [minP, 0, maxP].forEach(v => { const y = sy(v); ctx.fillText((v >= 0 ? "+" : "") + fI(v), padL - 2, y + 3); });
-}
-
-// ═══════════════════════════════════════════
-// ALERTS
-// ═══════════════════════════════════════════
-function addAlert() {
-  const i = document.getElementById("ai").value;
-  const cond = document.getElementById("ac2").value;
-  const price = parseFloat(document.getElementById("ap2").value);
-  const note = document.getElementById("an2").value;
-  if (!price || isNaN(price)) { toast("Enter a valid price", "err"); return; }
-  alerts.push({ id: alertId++, inst: i, cond, price, note, triggered: false });
-  document.getElementById("ap2").value = "";
-  document.getElementById("an2").value = "";
-  renderAlerts();
-  toast("Alert set ✓");
-}
-
-function deleteAlert(id) { alerts = alerts.filter(a => a.id !== id); renderAlerts(); }
-
-function renderAlerts() {
-  const el = document.getElementById("al-list");
-  if (!alerts.length) { el.innerHTML = `<div class="empty" style="padding:16px"><div class="et">No alerts</div></div>`; return; }
-  el.innerHTML = alerts.map(a => `
-    <div class="alc ${a.triggered ? "trig" : ""}">
-      <div>
-        <div class="a-main"><b style="color:var(--blue)">${a.inst}</b> ${a.cond === "above" ? "above" : "below"} <span class="a-price">₹${a.price.toLocaleString("en-IN")}</span></div>
-        <div class="a-sub">${a.note || ""}${a.triggered ? `<span style="color:var(--green);margin-left:5px">✓ Triggered</span>` : ""}</div>
-      </div>
-      <button class="del-b" onclick="deleteAlert(${a.id})">✕</button>
+// ═══════════════════════════════════
+// RENDER ORDERS
+// ═══════════════════════════════════
+function renderOrd(){
+  const el=document.getElementById("ord-content");
+  if(!orders.length){el.innerHTML=`<div class="empty"><div class="ei">📋</div><div class="et">No orders yet</div></div>`;return;}
+  el.innerHTML=orders.map(o=>`
+    <div class="ord-item">
+      <div><div class="o-main"><span class="chip ${o.action==="BUY"?"cbuy":"csell"}">${o.action}</span> ${o.instrument} ${parseFloat(o.strike).toFixed(0)} <span class="chip ${o.type==="CE"?"cce":"cpe"}">${o.type}</span></div>
+      <div class="o-sub">${o.expiry} · ${o.lots}L · ${o.time}</div></div>
+      <div style="text-align:right"><div class="o-price">₹${f2(o.price)}</div><div class="o-time"><span class="exec-b">EXECUTED</span></div></div>
     </div>`).join("");
 }
 
-function checkAlerts() {
-  let any = false;
-  alerts.forEach(a => {
-    if (a.triggered) return;
-    const sp = spots[a.inst]; if (!sp) return;
-    const t = (a.cond === "above" && sp >= a.price) || (a.cond === "below" && sp <= a.price);
-    if (t) {
-      a.triggered = true; any = true;
-      const msg = `${a.inst} ${a.cond} ₹${a.price} · Now ₹${sp.toLocaleString("en-IN", {minimumFractionDigits:2})}${a.note ? " (" + a.note + ")" : ""}`;
-      document.getElementById("apm").textContent = msg;
-      document.getElementById("ap").style.display = "block";
-      setTimeout(() => document.getElementById("ap").style.display = "none", 6000);
-      if (Notification.permission === "granted") new Notification("🔔 Optiq Alert", { body: msg });
-      else if (Notification.permission !== "denied") Notification.requestPermission().then(p => { if (p === "granted") new Notification("🔔 Alert", { body: msg }); });
-    }
-  });
-  if (any) renderAlerts();
-}
-
-// ═══════════════════════════════════════════
-// STRATEGIES
-// ═══════════════════════════════════════════
-function renderStrats() {
-  const el = document.getElementById("strat-list");
-  if (!chain?.oc || !spots[idx]) { el.innerHTML = `<div class="empty"><div class="et">Load option chain first</div></div>`; return; }
-  const spot = spots[idx];
-  const strikes = Object.keys(chain.oc).map(Number).sort((a, b) => a - b);
-  const atm = strikes.reduce((p, c) => Math.abs(c - spot) < Math.abs(p - spot) ? c : p, strikes[0]);
-  const step = strikes.length > 1 ? strikes[1] - strikes[0] : 50;
-  el.innerHTML = STRATS.map((s, i) => {
-    const legsHtml = s.legs.map(([action, type, offset]) => {
-      const target = atm + offset * step;
-      const nearK = strikes.reduce((p, c) => Math.abs(c - target) < Math.abs(p - target) ? c : p, strikes[0]);
-      const k = Object.keys(chain.oc).find(x => parseFloat(x) === nearK) || String(nearK);
-      const sd = type === "CE" ? chain.oc[k]?.ce : chain.oc[k]?.pe;
-      return `<span class="chip ${action==="BUY"?"cbuy":"csell"}">${action}</span> ${nearK} ${type} @ ₹${f2(sd?.last_price)}`;
-    }).join("  ·  ");
-    return `<div class="sc">
-      <div class="sn">${s.n}</div>
-      <div class="sd">${s.d}</div>
-      <div class="sl2">${legsHtml}</div>
-      <button class="seb" onclick="execStrat(${i})">⚡ EXECUTE ALL LEGS (PAPER)</button>
-    </div>`;
+// ═══════════════════════════════════
+// RENDER ANALYTICS
+// ═══════════════════════════════════
+function renderAn(){
+  const tp=positions.reduce((s,p)=>s+(getLtp(p)-p.avgPrice)*p.qty,0);
+  const pv=cash+positions.reduce((s,p)=>s+getLtp(p)*p.qty,0);
+  const ret=((pv-capital)/capital*100).toFixed(2);
+  document.getElementById("an-grid").innerHTML=[
+    ["Capital",fI(capital),"var(--muted)"],["Margin",fI(cash),"var(--blue)"],
+    ["P&L",(tp>=0?"+":"")+fI(Math.abs(tp)),tp>=0?"var(--green)":"var(--red)"],["Portfolio",fI(pv),"var(--text)"],
+    ["Return",`${ret>=0?"+":""}${ret}%`,parseFloat(ret)>=0?"var(--green)":"var(--red)"],["Positions",positions.length,"var(--purple)"],
+    ["Orders",orders.length,"var(--muted)"],["Deployed",fI(capital-cash),"var(--muted)"],
+  ].map(([l,v,c])=>`<div class="ac"><div class="acl">${l}</div><div class="acv" style="color:${c}">${v}</div></div>`).join("");
+  const pl=document.getElementById("an-pos");
+  if(!positions.length){document.getElementById("payoff-wrap").style.display="none";pl.innerHTML="";return;}
+  document.getElementById("payoff-wrap").style.display="block";
+  pl.innerHTML=`<div class="sec-t" style="margin-top:4px">Positions</div>`+positions.map(pos=>{
+    const ltp=getLtp(pos),pnl=(ltp-pos.avgPrice)*pos.qty,pct=((ltp-pos.avgPrice)/pos.avgPrice*100).toFixed(2);
+    return `<div class="pos-card"><div class="pc-top">
+      <div><div class="pc-name">${pos.instrument} <span class="chip ${pos.type==="CE"?"cce":"cpe"}">${pos.type}</span></div>
+      <div class="pc-det">${parseFloat(pos.strike).toFixed(0)} · ${pos.expiry}</div></div>
+      <div style="text-align:right"><div class="pnl-v ${pnl>=0?"pos":"neg"}">${pnl>=0?"+":""}₹${Math.abs(pnl).toFixed(0)}</div>
+      <div class="pnl-p ${pnl>=0?"pos":"neg"}">${pct>=0?"+":""}${pct}%</div></div>
+    </div></div>`;
   }).join("");
 }
 
-function execStrat(i) {
-  if (!chain?.oc || !spots[idx]) return;
-  const strat = STRATS[i], spot = spots[idx];
-  const strikes = Object.keys(chain.oc).map(Number).sort((a, b) => a - b);
-  const atm = strikes.reduce((p, c) => Math.abs(c - spot) < Math.abs(p - spot) ? c : p, strikes[0]);
-  const step = strikes.length > 1 ? strikes[1] - strikes[0] : 50;
-  const lot = INSTS[idx].lot;
-  let ok = true;
-  strat.legs.forEach(([action, type, offset]) => {
-    const target = atm + offset * step;
-    const nearK = strikes.reduce((p, c) => Math.abs(c - target) < Math.abs(p - target) ? c : p, strikes[0]);
-    const k = Object.keys(chain.oc).find(x => parseFloat(x) === nearK) || String(nearK);
-    const e = chain.oc[k]; const sd = type === "CE" ? e?.ce : e?.pe;
-    const fp = action === "BUY" ? sd?.top_ask_price : sd?.top_bid_price;
-    if (!fp) return;
-    const qty = lot, marg = fp * qty;
-    if (action === "BUY" && cash < marg) { toast("Insufficient margin for " + action + " " + nearK + " " + type, "err"); ok = false; return; }
-    const key = `${idx}|${k}|${type}|${expiry}`;
-    orders.unshift({ id:Date.now(), instrument:idx, strike:k, type, expiry, action, lots:1, qty, price:fp, status:"EXECUTED", time:new Date().toLocaleTimeString("en-IN") });
-    const ex = positions.find(p => p.key === key);
-    if (ex) { ex.qty += qty; ex.lots += 1; ex.avgPrice = (ex.avgPrice * (ex.qty - qty) + fp * qty) / ex.qty; }
-    else positions.push({ key, instrument:idx, strike:k, type, expiry, qty, lots:1, avgPrice:fp });
-    cash += action === "BUY" ? -marg : marg;
+// ═══════════════════════════════════
+// PAYOFF
+// ═══════════════════════════════════
+function renderPayoff(){
+  const canvas=document.getElementById("pf-canvas");const wrap=document.getElementById("pf-canvas-wrap");
+  if(!positions.length||!spots[idx])return;
+  const dpr=window.devicePixelRatio||1;const W=wrap.clientWidth,H=wrap.clientHeight;
+  canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+"px";canvas.style.height=H+"px";
+  const ctx=canvas.getContext("2d");ctx.scale(dpr,dpr);
+  ctx.fillStyle="#070B12";ctx.fillRect(0,0,W,H);
+  const spot=spots[idx],range=spot*.05;
+  const prices=Array.from({length:51},(_,i)=>spot-range+i*range*2/50);
+  const pnls=prices.map(price=>positions.reduce((s,pos)=>{const str=parseFloat(pos.strike);return s+((pos.type==="CE"?Math.max(0,price-str):Math.max(0,str-price))-pos.avgPrice)*pos.qty;},0));
+  const minP=Math.min(...pnls),maxP=Math.max(...pnls),rng=Math.max(1,maxP-minP);
+  const padL=54,padR=8,padT=8,padB=20;
+  const sx=x=>padL+(x-prices[0])/(prices[prices.length-1]-prices[0])*(W-padL-padR);
+  const sy=y=>padT+(maxP-y)/rng*(H-padT-padB);
+  ctx.strokeStyle="rgba(74,96,128,.3)";ctx.setLineDash([2,3]);ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(padL,sy(0));ctx.lineTo(W-padR,sy(0));ctx.stroke();
+  ctx.strokeStyle="rgba(245,158,11,.4)";ctx.beginPath();ctx.moveTo(sx(spot),padT);ctx.lineTo(sx(spot),H-padB);ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.beginPath();ctx.moveTo(sx(prices[0]),sy(pnls[0]));prices.forEach((p,i)=>ctx.lineTo(sx(p),sy(pnls[i])));
+  ctx.lineTo(sx(prices[prices.length-1]),sy(0));ctx.lineTo(sx(prices[0]),sy(0));ctx.closePath();
+  const g=ctx.createLinearGradient(0,padT,0,H-padB);g.addColorStop(0,"rgba(34,197,94,.2)");g.addColorStop(1,"rgba(239,68,68,.2)");
+  ctx.fillStyle=g;ctx.fill();
+  ctx.strokeStyle="#3B82F6";ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(sx(prices[0]),sy(pnls[0]));prices.forEach((p,i)=>ctx.lineTo(sx(p),sy(pnls[i])));ctx.stroke();
+  ctx.lineWidth=1;ctx.fillStyle="rgba(74,96,128,.8)";ctx.font="8px system-ui";ctx.textAlign="right";
+  [minP,0,maxP].forEach(v=>{const y=sy(v);ctx.fillText((v>=0?"+":"")+fI(v),padL-2,y+3);});
+}
+
+// ═══════════════════════════════════
+// ALERTS
+// ═══════════════════════════════════
+function addAlert(){
+  const i=document.getElementById("ai").value,cond=document.getElementById("ac2").value;
+  const price=parseFloat(document.getElementById("ap2").value),note=document.getElementById("an2").value;
+  if(!price||isNaN(price)){toast("Enter a valid price","err");return;}
+  alerts.push({id:alertId++,inst:i,cond,price,note,triggered:false});
+  document.getElementById("ap2").value="";document.getElementById("an2").value="";
+  renderAlerts();toast("Alert set ✓");
+}
+function deleteAlert(id){alerts=alerts.filter(a=>a.id!==id);renderAlerts();}
+function renderAlerts(){
+  const el=document.getElementById("al-list");
+  if(!alerts.length){el.innerHTML=`<div class="empty" style="padding:16px"><div class="et">No alerts</div></div>`;return;}
+  el.innerHTML=alerts.map(a=>`<div class="alc ${a.triggered?"trig":""}">
+    <div><div class="a-main"><b style="color:var(--blue)">${a.inst}</b> ${a.cond==="above"?"above":"below"} <span class="a-price">₹${a.price.toLocaleString("en-IN")}</span></div>
+    <div class="a-sub">${a.note||""}${a.triggered?`<span style="color:var(--green);margin-left:5px">✓ Triggered</span>`:""}</div></div>
+    <button class="del-b" onclick="deleteAlert(${a.id})">✕</button>
+  </div>`).join("");
+}
+function checkAlerts(){
+  let any=false;
+  alerts.forEach(a=>{
+    if(a.triggered)return;const sp=spots[a.inst];if(!sp)return;
+    const t=(a.cond==="above"&&sp>=a.price)||(a.cond==="below"&&sp<=a.price);
+    if(t){
+      a.triggered=true;any=true;
+      const msg=`${a.inst} ${a.cond} ₹${a.price} · Now ₹${sp.toLocaleString("en-IN",{minimumFractionDigits:2})}${a.note?" ("+a.note+")":""}`;
+      document.getElementById("apm").textContent=msg;
+      document.getElementById("apop").style.display="block";
+      setTimeout(()=>document.getElementById("apop").style.display="none",6000);
+      if(Notification.permission==="granted")new Notification("🔔 Optiq Alert",{body:msg});
+      else if(Notification.permission!=="denied")Notification.requestPermission().then(p=>{if(p==="granted")new Notification("🔔",{body:msg});});
+    }
   });
-  if (ok) toast(strat.n + " executed ✓");
-  updAll();
+  if(any)renderAlerts();
 }
 
-// ═══════════════════════════════════════════
+// ═══════════════════════════════════
+// STRATEGIES
+// ═══════════════════════════════════
+function renderStrats(){
+  const el=document.getElementById("strat-list");
+  if(!chain?.oc||!spots[idx]){el.innerHTML=`<div class="empty"><div class="et">Load option chain first</div></div>`;return;}
+  const spot=spots[idx],strikes=Object.keys(chain.oc).map(Number).sort((a,b)=>a-b);
+  const atm=strikes.reduce((p,c)=>Math.abs(c-spot)<Math.abs(p-spot)?c:p,strikes[0]);
+  const step=strikes.length>1?strikes[1]-strikes[0]:50;
+  el.innerHTML=STRATS.map((s,i)=>{
+    const legsHtml=s.legs.map(([action,type,offset])=>{
+      const target=atm+offset*step;
+      const nearK=strikes.reduce((p,c)=>Math.abs(c-target)<Math.abs(p-target)?c:p,strikes[0]);
+      const k=Object.keys(chain.oc).find(x=>parseFloat(x)===nearK)||String(nearK);
+      const sd=type==="CE"?chain.oc[k]?.ce:chain.oc[k]?.pe;
+      return `<span class="chip ${action==="BUY"?"cbuy":"csell"}">${action}</span> ${nearK} ${type} @ ₹${f2(sd?.last_price)}`;
+    }).join("  ·  ");
+    return `<div class="sc"><div class="sn">${s.n}</div><div class="sd">${s.d}</div><div class="sl2">${legsHtml}</div><button class="seb" onclick="execStrat(${i})">⚡ EXECUTE ALL LEGS</button></div>`;
+  }).join("");
+}
+
+function execStrat(i){
+  if(!chain?.oc||!spots[idx])return;
+  const strat=STRATS[i],spot=spots[idx];
+  const strikes=Object.keys(chain.oc).map(Number).sort((a,b)=>a-b);
+  const atm=strikes.reduce((p,c)=>Math.abs(c-spot)<Math.abs(p-spot)?c:p,strikes[0]);
+  const step=strikes.length>1?strikes[1]-strikes[0]:50;
+  const lot=TV[idx].lot;
+  strat.legs.forEach(([action,type,offset])=>{
+    const target=atm+offset*step;
+    const nearK=strikes.reduce((p,c)=>Math.abs(c-target)<Math.abs(p-target)?c:p,strikes[0]);
+    const k=Object.keys(chain.oc).find(x=>parseFloat(x)===nearK)||String(nearK);
+    const e=chain.oc[k];const sd=type==="CE"?e?.ce:e?.pe;
+    const fp=action==="BUY"?sd?.top_ask_price:sd?.top_bid_price;if(!fp)return;
+    const qty=lot,marg=fp*qty;if(action==="BUY"&&cash<marg){toast("Low margin","err");return;}
+    const key=`${idx}|${k}|${type}|${expiry}`;
+    orders.unshift({id:Date.now(),instrument:idx,strike:k,type,expiry,action,lots:1,qty,price:fp,status:"EXECUTED",time:new Date().toLocaleTimeString("en-IN")});
+    const ex=positions.find(p=>p.key===key);
+    if(ex){ex.qty+=qty;ex.lots+=1;ex.avgPrice=(ex.avgPrice*(ex.qty-qty)+fp*qty)/ex.qty;}
+    else positions.push({key,instrument:idx,strike:k,type,expiry,qty,lots:1,avgPrice:fp});
+    cash+=action==="BUY"?-marg:marg;
+  });
+  toast(strat.n+" executed ✓");updAll();
+}
+
+// ═══════════════════════════════════
 // NAVIGATION
-// ═══════════════════════════════════════════
-function setPage(pg, btn) {
-  document.querySelectorAll(".pg").forEach(p => p.classList.remove("on"));
-  document.querySelectorAll(".ni").forEach(b => b.classList.remove("on"));
-  document.getElementById(pg + "-pg").classList.add("on");
+// ═══════════════════════════════════
+function setPage(pg,btn){
+  document.querySelectorAll(".pg").forEach(p=>p.classList.remove("on"));
+  document.querySelectorAll(".ni").forEach(b=>b.classList.remove("on"));
+  document.getElementById(pg+"-pg").classList.add("on");
   btn.classList.add("on");
-  if (pg === "trades") renderPos();
-  if (pg === "an") { renderAn(); setTimeout(renderPayoff, 50); }
-  if (pg === "more") { renderOrd(); renderAlerts(); renderStrats(); }
-  if (pg === "chain") { renderExpiryBtns(); if (chain) renderChain(); else fetchChain(); }
-  if (pg === "chart") setTimeout(() => renderOi(), 50);
+  if(pg==="trades")renderPos();
+  if(pg==="an"){renderAn();setTimeout(renderPayoff,50);}
+  if(pg==="more"){renderOrd();renderAlerts();renderStrats();}
+  if(pg==="chain"){renderExpBtns();if(chain)renderChain();else loadChain();}
 }
 
-function setMoreTab(tab, btn) {
-  ["orders", "alerts", "strategy"].forEach(t => document.getElementById("mt-" + t).style.display = t === tab ? "block" : "none");
-  document.querySelectorAll(".stab").forEach(b => b.classList.remove("on"));
+function setMoreTab(tab,btn){
+  ["capital","orders","alerts","strategy"].forEach(t=>document.getElementById("mt-"+t).style.display=t===tab?"block":"none");
+  document.querySelectorAll(".stab").forEach(b=>b.classList.remove("on"));
   btn.classList.add("on");
-  if (tab === "strategy") renderStrats();
+  if(tab==="strategy")renderStrats();
+  if(tab==="orders")renderOrd();
 }
 
-// ═══════════════════════════════════════════
-// STARTUP
-// ═══════════════════════════════════════════
-function isMarketHours() {
-  // IST = UTC+5:30
-  const now = new Date();
-  const ist = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
-  const h = ist.getUTCHours(), m = ist.getUTCMinutes(), day = ist.getUTCDay();
-  // Monday=1 to Friday=5 only
-  if (day === 0 || day === 6) return false;
-  return (h > 9 || (h === 9 && m >= 15)) && (h < 15 || (h === 15 && m <= 30));
-}
+// ═══════════════════════════════════
+// STARTUP — opens immediately, no blocking
+// ═══════════════════════════════════
+window.addEventListener("load",()=>{
+  // Open app immediately
+  document.getElementById("ls").style.display="none";
+  document.getElementById("shell").style.display="flex";
 
-async function startup() {
-  // Always load TV chart first — works 24/7, no proxy needed
-  loadTvChart();
+  // Load TradingView chart immediately
+  loadTV();
 
-  // Always open the app — don't block on NSE data
-  document.getElementById("ls").style.display = "none";
-  document.getElementById("shell").style.display = "flex";
+  // Update top bar
+  updTop();
 
-  // Resize observer for OI chart
-  new ResizeObserver(() => renderOi()).observe(document.getElementById("oi-wrap"));
+  // Silently try to load expiries in background
+  fetch(PROXY+"/expiries?symbol=NIFTY")
+    .then(r=>r.json())
+    .then(e=>{
+      expiries=Array.isArray(e)?e:[];
+      expiry=expiries[0]||"";
+      renderExpBtns();
+    })
+    .catch(()=>{});
 
-  // Show market status message
-  if (!isMarketHours()) {
-    toast("Market closed. Charts work 24/7. Option chain available 9:15 AM – 3:30 PM.", "warn");
-    document.getElementById("chain-scroll").innerHTML = `
-      <div class="chain-err">
-        <span>🕐 Market is closed</span>
-        <span style="font-size:10px;color:var(--muted);line-height:1.6">
-          NSE option chain data is only available during market hours.<br><br>
-          <b style="color:var(--text)">Monday – Friday: 9:15 AM – 3:30 PM IST</b><br><br>
-          Charts and all other features work 24/7.
-        </span>
-        <button class="retry-btn" onclick="chainFetchAttempt=0;tryFetchAll()">↺ Try Anyway</button>
-      </div>`;
-    return;
-  }
-
-  // Market is open — fetch data
-  await tryFetchAll();
-
-  // Auto refresh every 30 seconds during market hours
-  setInterval(() => {
-    if (isMarketHours()) { chainFetchAttempt = 0; fetchChain(); }
-  }, 30000);
-}
-
-async function tryFetchAll() {
-  showSpin(true);
-  try {
-    const exps = await apiGet("/expiries?symbol=" + idx);
-    expiries = Array.isArray(exps) ? exps : [];
-    expiry = expiries[0] || "";
-    renderExpiryBtns();
-    await fetchChain();
-    toast("Live data loaded ✓");
-  } catch(e) {
-    toast("NSE data unavailable: " + e.message, "err");
-    document.getElementById("chain-scroll").innerHTML = `
-      <div class="chain-err">
-        <span>⚠ Could not load data</span>
-        <span style="font-size:10px;color:var(--muted);line-height:1.5">${e.message}</span>
-        <button class="retry-btn" onclick="chainFetchAttempt=0;tryFetchAll()">↺ Retry</button>
-      </div>`;
-  }
-  showSpin(false);
-}
-
-window.addEventListener("load", startup);
+  // Auto refresh chain every 30s if market is open
+  setInterval(()=>{
+    if(isMarketOpen()&&chain){
+      fetch(PROXY+"/chain?symbol="+idx+"&expiry="+encodeURIComponent(expiry))
+        .then(r=>r.json())
+        .then(data=>{
+          if(data.oc&&Object.keys(data.oc).length>0){
+            prevSpot=spots[idx]||data.last_price;
+            spots[idx]=data.last_price;
+            chain=data;
+            updSpot();renderChain();checkAlerts();updTop();
+          }
+        }).catch(()=>{});
+    }
+  },30000);
+});
 </script>
 </body>
 </html>
